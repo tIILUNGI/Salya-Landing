@@ -38,7 +38,7 @@ const Landing: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 font-app selection:bg-primary/10 selection:text-primary">
       <header className="border-b border-slate-100 dark:border-slate-800 sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group">
             <img src="/logo.png" alt="Salya Logo" className="h-10 w-auto" />
           </a>
@@ -72,12 +72,12 @@ const Landing: React.FC = () => {
       </header>
 
       <section className="relative py-24 px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-30">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-full -z-10 opacity-30">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-400/20 rounded-full blur-[120px]" />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-[1400px] mx-auto text-center space-y-8">
           <h2 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
             Gestão Moderna de <br /> <span className="text-primary italic">Folha de Pagamento</span>
           </h2>
@@ -105,7 +105,7 @@ const Landing: React.FC = () => {
       </section>
 
       <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="group bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-card hover:border-primary/30 transition-all">
               <div className="size-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -139,7 +139,7 @@ const Landing: React.FC = () => {
       </section>
 
       <section className="py-24 px-6 bg-slate-900 overflow-hidden" id="sobre">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="flex-1 space-y-8">
             <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">A Plataforma</h3>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
@@ -198,7 +198,7 @@ const Landing: React.FC = () => {
       </section>
 
       <section className="py-24 px-6 bg-white dark:bg-slate-900" id="funcionalidades">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20 space-y-4">
             <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Funcionalidades</h3>
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Potencialize a sua Gestão</h2>
@@ -228,7 +228,7 @@ const Landing: React.FC = () => {
       </section>
 
       <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/50" id="planos">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Investimento</h3>
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Planos Disponíveis</h2>
@@ -324,7 +324,7 @@ const Landing: React.FC = () => {
       </section>
 
       <footer className="py-8 px-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-row items-center gap-4">
             <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto" />
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2026 SALYA.Todos os direitos reservados</p>
