@@ -325,11 +325,9 @@ const Landing: React.FC = () => {
 
       <footer className="py-8 px-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Salya Logo" className="h-8 w-auto" />
-            </div>
-            <p className="text-xs text-slate-400 font-bold uppercase tracking-widest leading-relaxed">© 2026 SALYA</p>
+          <div className="flex flex-row items-center gap-4">
+            <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto" />
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2026 SALYA.Todos os direitos reservados</p>
           </div>
         </div>
       </footer>
