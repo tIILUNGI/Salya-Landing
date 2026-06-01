@@ -88,10 +88,10 @@ const Landing: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <a
-              href={loginUrl}
+              href={appPath('/registar')}
               className="w-full sm:w-auto px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-105 transition-all text-center"
             >
-              Começar agora
+              Testar Gratis
             </a>
             <button
               type="button"
