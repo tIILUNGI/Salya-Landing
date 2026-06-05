@@ -3,7 +3,11 @@ import { appPath } from '../config/urls';
 
 const loginUrl = appPath('/login');
 
-const Landing: React.FC = () => {
+interface LandingProps {
+  onShowTerms?: () => void;
+}
+
+const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
   const funcionalidades = [
     {
       titulo: 'Gestão de Colaboradores',
@@ -272,7 +276,7 @@ const Landing: React.FC = () => {
                   <span className="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
                   Recibos PDF Ilimitados
                 </li>
-                <li className="flex items-center gap-3 text-sm text-slate-500 font-bold text-primary">
+                <li className="flex items-center gap-3 text-sm font-bold text-primary">
                   <span className="material-symbols-outlined text-primary text-lg font-normal">check_circle</span>
                   Melhor Custo-Benefício
                 </li>
@@ -328,6 +332,14 @@ const Landing: React.FC = () => {
           <div className="flex flex-row items-center gap-4">
             <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto" />
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2026 SALYA.Todos os direitos reservados</p>
+          </div>
+          <div className="flex items-center gap-6">
+            <button
+              onClick={onShowTerms}
+              className="text-[10px] text-slate-400 hover:text-primary font-bold uppercase tracking-widest transition-colors"
+            >
+              Termos de Uso e Política de Privacidade
+            </button>
           </div>
         </div>
       </footer>
