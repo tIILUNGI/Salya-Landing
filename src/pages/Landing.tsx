@@ -239,102 +239,79 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             <p className="text-slate-500 font-medium">Escolha a solução ideal para o crescimento da sua empresa.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Plano Demo */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Demo</h4>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-3xl font-black text-slate-900 dark:text-white">Grátis</span>
               </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Teste 24 horas
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Funcionalidades totais
-                </li>
-                <li className="flex items-center gap-3 text-sm font-bold text-primary bg-primary/5 px-3 py-2 rounded-lg border border-primary/20">
-                  <span className="material-symbols-outlined text-primary text-base">business</span>
-                  1 Entidade & 1 Usuário
-                </li>
-              </ul>
+               <ul className="space-y-3 mb-8 flex-1">
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Teste 24 horas
+                 </li>
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Funcionalidades totais
+                 </li>
+               </ul>
               <a href={appPath('/registar?plan=DEMO')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Testar Agora</a>
             </div>
 
-            {/* Plano Semestral */}
-            <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
-              <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Semestral</h4>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-black text-slate-900 dark:text-white">22.000</span>
-                <span className="text-xs font-bold text-slate-400 uppercase">Kz / 6 meses</span>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  IRT & INSS Automáticos
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Recibos PDF Ilimitados
-                </li>
-                <li className="flex items-center gap-3 text-sm font-bold text-primary bg-primary/5 px-3 py-2 rounded-lg border border-primary/20">
-                  <span className="material-symbols-outlined text-primary text-base">business</span>
-                  1 Entidade & 1 Usuário
-                </li>
-              </ul>
-              <a href={appPath('/registar?plan=SEMESTRAL')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Subscrever</a>
-            </div>
+             {/* Plano Semestral */}
+             <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
+               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Semestral</h4>
+               <div className="flex items-baseline gap-1 mb-6">
+                 <span className="text-3xl font-black text-slate-900 dark:text-white">22.800</span>
+                 <span className="text-xs font-bold text-slate-400 uppercase">Kz / 6 meses</span>
+               </div>
+               <ul className="space-y-3 mb-8 flex-1">
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   IRT & INSS Automáticos
+                 </li>
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Recibos PDF Ilimitados
+                 </li>
+                 <li className="text-sm text-slate-500">
+                   Apenas Particulares (não empresas)
+                 </li>
+               </ul>
+               <a href={appPath('/registar?plan=SEMESTRAL')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Subscrever</a>
+             </div>
 
-            {/* Plano Anual - RECOMENDADO */}
-            <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border-2 border-primary flex flex-col relative scale-105 shadow-xl z-10">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Recomendado</div>
-              <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Anual</h4>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-black text-primary">45.000</span>
-                <span className="text-xs font-bold text-slate-400 uppercase">Kz / ano</span>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Economia Real
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Relatórios de BI
-                </li>
-                <li className="flex items-center gap-3 text-sm font-bold text-primary bg-primary/5 px-3 py-2 rounded-lg border border-primary/20">
-                  <span className="material-symbols-outlined text-primary text-base">business</span>
-                  3 Entidades & 3 Usuários
-                </li>
-              </ul>
-              <a href={appPath('/registar?plan=ANUAL')} className="w-full py-3 bg-primary text-white text-center font-bold rounded-xl hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">Subscrever</a>
-            </div>
+             {/* Plano Anual - RECOMENDADO */}
+             <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border-2 border-primary flex flex-col relative scale-105 shadow-xl z-10">
+               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Recomendado</div>
+               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Anual</h4>
+               <div className="flex items-baseline gap-1 mb-6">
+                 <span className="text-3xl font-black text-primary">114.000</span>
+                 <span className="text-xs font-bold text-slate-400 uppercase">Kz / ano</span>
+               </div>
+               <ul className="space-y-3 mb-8 flex-1">
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Economia Real
+                 </li>
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Relatórios de BI
+                 </li>
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-primary text-base">business</span>
+                   5 Entidades (Particulares e Empresas)
+                 </li>
+                 <li className="flex items-center gap-3 text-sm text-slate-500">
+                   <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                   Gestão de Utilizadores Ilimitada
+                 </li>
+               </ul>
+               <a href={appPath('/registar?plan=ANUAL')} className="w-full py-3 bg-primary text-white text-center font-bold rounded-xl hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">Subscrever</a>
+             </div>
 
-            {/* Plano Bianual */}
-            <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
-              <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Bianual</h4>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-black text-slate-900 dark:text-white">85.000</span>
-                <span className="text-xs font-bold text-slate-400 uppercase">Kz / 2 anos</span>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Máxima Economia
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-500">
-                  <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                  Suporte VIP
-                </li>
-                <li className="flex items-center gap-3 text-sm font-bold text-primary bg-primary/5 px-3 py-2 rounded-lg border border-primary/20">
-                  <span className="material-symbols-outlined text-primary text-base">business</span>
-                  5 Entidades & 5 Usuários
-                </li>
-              </ul>
-              <a href={appPath('/registar?plan=BIANUAL')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Subscrever</a>
-            </div>
+
           </div>
         </div>
       </section>
