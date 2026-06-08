@@ -1,5 +1,13 @@
+import { useState } from 'react';
 import Landing from './pages/Landing';
+import TermsAndPrivacy from './pages/TermsAndPrivacy';
 
 export default function App() {
-  return <Landing />;
+  const [showTerms, setShowTerms] = useState(false);
+
+  if (showTerms) {
+    return <TermsAndPrivacy onBack={() => setShowTerms(false)} />;
+  }
+
+  return <Landing onShowTerms={() => setShowTerms(true)} />;
 }
