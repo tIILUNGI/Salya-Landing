@@ -11,6 +11,10 @@ const TermsAndPrivacy: React.FC<TermsAndPrivacyProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-app selection:bg-primary/10 selection:text-primary">
+      {/* Logotipo como marca d'água no fundo */}
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+        <img src="/logo.png" alt="Salya Logo" className="h-80 w-auto opacity-10" />
+      </div>
 
       <header className="border-b border-slate-100 dark:border-slate-800 sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -272,14 +276,6 @@ const TermsAndPrivacy: React.FC<TermsAndPrivacyProps> = ({ onBack }) => {
         </div>
       </main>
 
-      <footer className="py-12 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 mt-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto mx-auto mb-6 opacity-50" />
-          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">
-            © 2026 SALYA. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };
