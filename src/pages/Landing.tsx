@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { appPath } from '../config/urls';
 
 const loginUrl = appPath('/login');
@@ -8,6 +8,8 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isPagePeeling, setIsPagePeeling] = useState(false);
   const funcionalidades = [
     {
       titulo: 'Gestão de Colaboradores',
@@ -75,17 +77,39 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
         </div>
       </header>
 
-      <section className="relative py-24 px-6 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center py-24 px-6 overflow-hidden">
+        {/* Background Image (The layer behind the sheet) */}
+        <div className="absolute inset-0 -z-10">
+          <img 
+            src="/principal.jpeg" 
+            alt="Dashboard de Gestão" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* The "Sheet" Layer (Overlay only) */}
+        <div 
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out z-10 ${
+            isPagePeeling ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        >
+          {/* Overlay Sheet */}
+          <div className="absolute inset-0 bg-white/85 dark:bg-slate-950/90 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-slate-50/50 dark:from-slate-950/20 dark:to-slate-950" />
+        </div>
+
+        {/* Decorative Orbs (Behind content) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-30">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-400/20 rounded-full blur-[120px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto text-center space-y-8">
+        {/* Fixed Content - Always visible */}
+        <div className="max-w-7xl mx-auto text-center space-y-8 px-6 relative z-20 transition-all duration-700">
           <h2 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
             Gestão Moderna de <br /> <span className="text-primary italic">Folha de Pagamento</span>
           </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
+          <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto font-semibold">
             Simplifique a sua folha de pagamento, automatize cálculos de IRT e INSS e emita recibos profissionais em segundos com a
             SALYA.
           </p>
@@ -93,17 +117,41 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <a
               href={appPath('/registar')}
-              className="w-full sm:w-auto px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-105 transition-all text-center"
+              className="w-full sm:w-auto px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-105 hover:shadow-primary/40 hover:bg-primary/90 transition-all text-center flex items-center justify-center gap-2"
             >
               Testar Gratis
+              <span className="material-symbols-outlined text-xl">arrow_forward</span>
             </a>
             <button
               type="button"
               onClick={() => scrollToSection('funcionalidades')}
-              className="w-full sm:w-auto px-10 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-100 dark:border-slate-700 hover:bg-slate-50 transition-all"
+              className="px-10 py-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-100 dark:border-slate-700 hover:bg-white/80 dark:hover:bg-slate-800 transition-all"
             >
               Explorar Funcionalidades
             </button>
+          </div>
+        </div>
+
+        {/* Corner Peel Trigger Art */}
+        <div 
+          onMouseEnter={() => setIsPagePeeling(true)}
+          onMouseLeave={() => setIsPagePeeling(false)}
+          className="absolute top-0 left-0 size-32 md:size-48 z-[60] cursor-pointer group"
+        >
+          {/* Corner Shadow/Fold Art */}
+          <div className="absolute top-0 left-0 size-full transition-transform duration-500 group-hover:scale-110 origin-top-left">
+            <div className="absolute top-0 left-0 size-12 md:size-14 bg-white dark:bg-slate-800 shadow-2xl rounded-br-[1.5rem] border-b border-r border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden">
+               {/* Decorative "Peel" line */}
+               <div className="absolute top-0 left-0 size-full bg-linear-to-br from-slate-100 via-transparent to-transparent opacity-50" />
+               <span className="material-symbols-outlined text-primary text-sm md:text-base animate-pulse">
+                 menu_book
+               </span>
+            </div>
+          </div>
+          
+          {/* Hint Text */}
+          <div className="absolute top-24 left-4 md:top-28 md:left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="text-[10px] font-black uppercase text-primary tracking-widest bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-full shadow-sm whitespace-nowrap">Ver Sistema</p>
           </div>
         </div>
       </section>
@@ -201,6 +249,54 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="py-24 px-6 bg-white dark:bg-slate-950 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+          <div className="flex-1 space-y-6">
+            <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Em Ação</h3>
+            <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+              Veja como o <span className="text-primary">SALYA</span> pode transformar o seu negócio.
+            </h2>
+            <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">
+              Acompanhe nosso canal no WhatsApp para dicas, atualizações e suporte exclusivo para a sua jornada de gestão.
+            </p>
+            <a 
+              href="https://whatsapp.com/channel/0029Vaf9xXCJkK74kDKpi80T"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-3.5 bg-[#25D366] text-white font-bold rounded-2xl shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all"
+            >
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="size-5 brightness-0 invert" />
+              Seguir Canal Oficial
+            </a>
+          </div>
+          <div className="flex-1 w-full group relative">
+            <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-2xl group-hover:bg-primary/20 transition-all" />
+            <div 
+              onClick={() => setIsVideoModalOpen(true)}
+              className="relative rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center cursor-pointer"
+            >
+              <div className="absolute inset-0 z-20 flex items-center justify-center group/btn">
+                <div className="size-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover/btn:scale-110 group-hover/btn:bg-white/30 transition-all">
+                  <span className="material-symbols-outlined text-white text-5xl">play_circle</span>
+                </div>
+              </div>
+              <video 
+                src="/mov.mp4" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Carousel Section */}
+      <Carousel />
+
       <section className="py-24 px-6 bg-white dark:bg-slate-900" id="funcionalidades">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 space-y-4">
@@ -240,7 +336,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Plano Demo */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Demo</h4>
               <div className="flex items-baseline gap-1 mb-6">
@@ -259,7 +354,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               <a href={appPath('/registar?plan=DEMO')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Testar Agora</a>
             </div>
 
-             {/* Plano Semestral */}
              <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-soft">
                <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Semestral</h4>
                <div className="flex items-baseline gap-1 mb-6">
@@ -282,7 +376,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                <a href={appPath('/registar?plan=SEMESTRAL')} className="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-center font-bold rounded-xl hover:bg-slate-200 transition-all">Subscrever</a>
              </div>
 
-             {/* Plano Anual - RECOMENDADO */}
              <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border-2 border-primary flex flex-col relative scale-105 shadow-xl z-10">
                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Recomendado</div>
                <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Plano Anual</h4>
@@ -310,13 +403,11 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                </ul>
                <a href={appPath('/registar?plan=ANUAL')} className="w-full py-3 bg-primary text-white text-center font-bold rounded-xl hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">Subscrever</a>
              </div>
-
-
           </div>
         </div>
       </section>
 
-<footer className="py-8 px-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+      <footer className="py-8 px-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
            <div className="flex flex-row items-center gap-4">
              <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto" />
@@ -332,7 +423,112 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
            </div>
          </div>
        </footer>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-xl p-4 md:p-10">
+          <button 
+            onClick={() => setIsVideoModalOpen(false)}
+            className="absolute top-6 right-6 size-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-[110]"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          
+          <div className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+            <video 
+              src="/mov.mp4" 
+              autoPlay 
+              controls 
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
+  );
+};
+
+const Carousel: React.FC = () => {
+  const images = [
+    {
+      src: '/Arte 1 - 1x1.jpg.jpeg',
+      title: 'Simplicidade & Eficiência',
+      description: 'Tenha o controle total da sua folha de pagamento em poucos cliques. Design intuitivo focado na produtividade do seu RH.'
+    },
+    {
+      src: '/Arte 2 - 1x1b.jpg.jpeg',
+      title: 'Cálculos Inteligentes',
+      description: 'Automatização precisa de IRT e INSS conforme a lei angolana. Reduza erros e economize tempo valioso todos os meses.'
+    }
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16 space-y-4">
+          <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Visão do Sistema</h3>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Experiência Digital Superior</h2>
+        </div>
+
+        <div className="relative group">
+          <div className="relative overflow-hidden rounded-[3rem] shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 aspect-video md:aspect-[21/9]">
+            {images.map((img, idx) => (
+              <div 
+                key={idx}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out flex flex-col md:flex-row items-center ${
+                  idx === activeIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'
+                }`}
+              >
+                <div className="flex-1 h-full w-full">
+                  <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1 p-8 md:p-12 space-y-6 bg-white dark:bg-slate-900">
+                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    Destaque #{idx + 1}
+                  </div>
+                  <h4 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+                    {img.title}
+                  </h4>
+                  <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                    {img.description}
+                  </p>
+                  <div className="pt-4 flex gap-4">
+                    <button onClick={() => setActiveIndex(0)} title="Slide 1" aria-label="Ir para o slide 1" className={`size-3 rounded-full transition-all ${activeIndex === 0 ? 'bg-primary w-8' : 'bg-slate-200 dark:bg-slate-700'}`} />
+                    <button onClick={() => setActiveIndex(1)} title="Slide 2" aria-label="Ir para o slide 2" className={`size-3 rounded-full transition-all ${activeIndex === 1 ? 'bg-primary w-8' : 'bg-slate-200 dark:bg-slate-700'}`} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button 
+            onClick={() => setActiveIndex((prev) => (prev - 1 + images.length) % images.length)}
+            title="Slide Anterior"
+            aria-label="Ir para o slide anterior"
+            className="absolute left-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30"
+          >
+            <span className="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button 
+            onClick={() => setActiveIndex((prev) => (prev + 1) % images.length)}
+            title="Próximo Slide"
+            aria-label="Ir para o próximo slide"
+            className="absolute right-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30"
+          >
+            <span className="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
 
