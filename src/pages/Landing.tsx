@@ -7,9 +7,21 @@ interface LandingProps {
   onShowTerms?: () => void;
 }
 
+const HERO_IMAGES = [
+  { src: '/loand.png', alt: 'Profissional usando SALYA' },
+  { src: '/Arte_1_sem fundo.png', alt: 'SALYA em ação' },
+];
+
 const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isPagePeeling, setIsPagePeeling] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex(prev => (prev + 1) % HERO_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   const funcionalidades = [
     {
       titulo: 'Gestão de Colaboradores',
@@ -77,84 +89,60 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
         </div>
       </header>
 
-      <section className="relative min-h-[90vh] flex items-center py-24 px-6 overflow-hidden">
-        {/* Background Image (The layer behind the sheet) */}
-        <div className="absolute inset-0 -z-10">
-          <img 
-            src="/principal.jpeg" 
-            alt="Dashboard de Gestão" 
-            className="w-full h-full object-cover"
-          />
-        </div>
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center min-h-[480px] md:min-h-[560px] relative z-10">
 
-        {/* The "Sheet" Layer (Overlay only) */}
-        <div 
-          className={`absolute inset-0 transition-all duration-1000 ease-in-out z-10 ${
-            isPagePeeling ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-        >
-          {/* Overlay Sheet */}
-          <div className="absolute inset-0 bg-white/85 dark:bg-slate-950/90 backdrop-blur-[3px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-slate-50/50 dark:from-slate-950/20 dark:to-slate-950" />
-        </div>
+          {/* Left — text content */}
+          <div className="flex-1 py-16 md:py-20 space-y-7 z-10">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight max-w-xl">
+              <span className="block whitespace-nowrap">Gestão Moderna de</span>
+              <span className="block whitespace-nowrap text-primary italic">Folha de Pagamento</span>
+            </h2>
 
-        {/* Decorative Orbs (Behind content) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-30">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-400/20 rounded-full blur-[120px]" />
-        </div>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-lg font-semibold leading-relaxed">
+              Simplifique a sua folha de pagamento, automatize cálculos de IRT e INSS e emita recibos profissionais em segundos com a <strong className="text-slate-800 dark:text-white">SALYA</strong>.
+            </p>
 
-        {/* Fixed Content - Always visible */}
-        <div className="max-w-7xl mx-auto text-center space-y-8 px-6 relative z-20 transition-all duration-700">
-          <h2 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-            Gestão Moderna de <br /> <span className="text-primary italic">Folha de Pagamento</span>
-          </h2>
-          <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto font-semibold">
-            Simplifique a sua folha de pagamento, automatize cálculos de IRT e INSS e emita recibos profissionais em segundos com a
-            SALYA.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <a
-              href={appPath('/registar')}
-              className="w-full sm:w-auto px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-105 hover:shadow-primary/40 hover:bg-primary/90 transition-all text-center flex items-center justify-center gap-2"
-            >
-              Testar Gratis
-              <span className="material-symbols-outlined text-xl">arrow_forward</span>
-            </a>
-            <button
-              type="button"
-              onClick={() => scrollToSection('funcionalidades')}
-              className="px-10 py-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-100 dark:border-slate-700 hover:bg-white/80 dark:hover:bg-slate-800 transition-all"
-            >
-              Explorar Funcionalidades
-            </button>
-          </div>
-        </div>
-
-        {/* Corner Peel Trigger Art */}
-        <div 
-          onMouseEnter={() => setIsPagePeeling(true)}
-          onMouseLeave={() => setIsPagePeeling(false)}
-          className="absolute top-0 left-0 size-32 md:size-48 z-[60] cursor-pointer group"
-        >
-          {/* Corner Shadow/Fold Art */}
-          <div className="absolute top-0 left-0 size-full transition-transform duration-500 group-hover:scale-110 origin-top-left">
-            <div className="absolute top-0 left-0 size-12 md:size-14 bg-white dark:bg-slate-800 shadow-2xl rounded-br-[1.5rem] border-b border-r border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden">
-               {/* Decorative "Peel" line */}
-               <div className="absolute top-0 left-0 size-full bg-linear-to-br from-slate-100 via-transparent to-transparent opacity-50" />
-               <span className="material-symbols-outlined text-primary text-sm md:text-base animate-pulse">
-                 menu_book
-               </span>
+            <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
+              <a
+                href={appPath('/registar')}
+                className="px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-105 hover:shadow-primary/40 hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+              >
+                Testar Grátis
+                <span className="material-symbols-outlined text-xl">arrow_forward</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => scrollToSection('funcionalidades')}
+                className="px-10 py-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+              >
+                Explorar Funcionalidades
+              </button>
             </div>
           </div>
-          
-          {/* Hint Text */}
-          <div className="absolute top-24 left-4 md:top-28 md:left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <p className="text-[10px] font-black uppercase text-primary tracking-widest bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-full shadow-sm whitespace-nowrap">Ver Sistema</p>
+
+          {/* Right — hero image slideshow */}
+          <div className="hidden md:flex flex-1 items-end justify-center self-stretch relative min-h-[480px]">
+            {HERO_IMAGES.map((img, idx) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                className="absolute bottom-0 right-0 w-auto object-contain object-bottom transition-opacity duration-1000"
+                style={{
+                  mixBlendMode: 'multiply',
+                  opacity: idx === heroIndex ? 1 : 0,
+                  pointerEvents: idx === heroIndex ? 'auto' : 'none',
+                  height: idx === 0 ? '90%' : '105%',
+                  maxHeight: idx === 0 ? '520px' : '620px',
+                }}
+              />
+            ))}
           </div>
         </div>
       </section>
+
 
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
