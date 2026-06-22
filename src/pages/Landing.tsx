@@ -146,14 +146,14 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="group bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-card hover:border-primary/30 transition-all">
               <div className="size-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl text-primary">calculate</span>
               </div>
               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-3 tracking-tight">Cálculos Automatizados</h4>
               <p className="text-sm text-slate-500 leading-relaxed">
-                Processamento preciso de IRT e INSS com as taxas oficiais da AGT sempre atualizadas conforme a lei vigente.
+                Processamento preciso de IRT e INSS conforme a lei vigente.
               </p>
             </div>
             <div className="group bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-card hover:border-primary/30 transition-all">
@@ -162,18 +162,10 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               </div>
               <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-3 tracking-tight">Recibos Profissionais</h4>
               <p className="text-sm text-slate-500 leading-relaxed">
-                Geração instantânea de recibos profissionais em PDF, organizados e prontos para envio digital seguro.
+                Geração instantânea de recibos profissionais.
               </p>
             </div>
-            <div className="group bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-card hover:border-primary/30 transition-all">
-              <div className="size-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl text-primary">groups</span>
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-3 tracking-tight">Liderança de Equipa</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Controlo digital sobre perfis, cargos e histórico profissional de cada colaborador em um ambiente integrado.
-              </p>
-            </div>
+
           </div>
         </div>
       </section>
@@ -189,18 +181,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               O SALYA foi desenhado especificamente para as necessidades das PME&apos;s angolanas, removendo a complexidade técnica e
               burocrática da folha de pagamento.
             </p>
-            <div className="grid grid-cols-2 gap-6 pt-4">
-              <div className="space-y-3 p-6 bg-white/5 rounded-2xl border border-white/10">
-                <h5 className="font-bold text-primary text-sm uppercase tracking-wider">Conformidade</h5>
-                <p className="text-xs text-slate-400 leading-relaxed">Cálculos baseados nas últimas tabelas de IRT e diretrizes da AGT.</p>
-              </div>
-              <div className="space-y-3 p-6 bg-white/5 rounded-2xl border border-white/10">
-                <h5 className="font-bold text-primary text-sm uppercase tracking-wider">Segurança</h5>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Dados cifrados e infraestrutura robusta para proteção da sua empresa.
-                </p>
-              </div>
-            </div>
+
           </div>
           <div className="flex-1 relative w-full lg:w-auto">
             <div className="size-64 bg-primary/20 rounded-full blur-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
@@ -301,7 +282,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   <img
                     src={func.imagem}
                     alt={func.titulo}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 text-transparent" />
                 </div>
