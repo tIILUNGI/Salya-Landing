@@ -118,23 +118,22 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center min-h-[520px] md:min-h-[620px] relative z-10 gap-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-stretch min-h-[520px] md:min-h-[620px] relative z-10 gap-8">
 
           {/* Left — text content (PAS Formula) */}
-          <div className="flex-1 py-12 md:py-16 space-y-7 z-10 order-2 lg:order-1">
+          <div className="flex-1 flex flex-col py-12 md:py-16 space-y-7 z-10 order-2 lg:order-1">
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-primary">
               Folha de pagamento angolana, sem planilhas
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-slate-900 dark:text-white leading-[1.08] tracking-tight max-w-xl">
-              Processe salários em minutos.{' '}
-              <span className="text-primary">IRT, INSS e recibos</span> calculados pela lei.
+              <span className="text-primary">Processar salários</span> no Excel é um risco que a sua empresa não precisa de correr.
             </h2>
 
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-lg font-medium leading-relaxed">
               A AGT não perdoa erros na folha. O SALYA elimina o risco: cálculos automáticos conforme a Lei n.º 14/25, recibos em PDF e conformidade fiscal garantida — para PMEs, gabinetes e gestores que não têm tempo a perder.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 mt-auto">
               <a
                 href={appPath('/registar')}
                 className="px-10 py-4 bg-primary text-white text-base font-bold rounded-2xl shadow-xl shadow-primary/30 hover:scale-[1.03] hover:shadow-primary/40 hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
@@ -150,42 +149,27 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 Simular IRT ao Vivo
               </button>
             </div>
-            
-            <div className="flex items-center gap-6 pt-4 text-xs font-semibold text-slate-400 dark:text-slate-500">
-              <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-emerald-500 text-base">check</span>
-                Sem cartão de crédito
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-emerald-500 text-base">check</span>
-                Ativação em 2 minutos
-              </div>
-            </div>
+
           </div>
 
           {/* Right — hero image + selo AGT */}
-          <div className="flex-1 flex flex-col items-center justify-end self-stretch relative min-h-[320px] lg:min-h-[480px] order-1 lg:order-2 w-full">
-            <div className="relative w-full flex items-end justify-center min-h-[260px] lg:min-h-[420px]">
+          <div className="flex-1 flex flex-col items-center justify-end relative min-h-[380px] lg:min-h-[560px] order-1 lg:order-2 w-full">
+            <div className="relative w-full flex items-center justify-center min-h-[320px] lg:min-h-[500px]">
               {HERO_IMAGES.map((img, idx) => (
                 <img
                   key={img.src}
                   src={img.src}
                   alt={img.alt}
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-0 w-auto max-w-[85%] lg:max-w-none object-contain object-bottom transition-opacity duration-1000"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-0 w-auto max-w-[85%] lg:max-w-none object-contain object-bottom transition-opacity duration-1000 h-full"
                   style={{
                     mixBlendMode: 'multiply',
                     opacity: idx === heroIndex ? 1 : 0,
                     pointerEvents: idx === heroIndex ? 'auto' : 'none',
-                    height: idx === 0 ? '90%' : '105%',
-                    maxHeight: idx === 0 ? '380px' : '480px',
                   }}
                 />
               ))}
             </div>
-            <div className="relative z-10 mt-4 lg:mt-6 inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-bold border border-emerald-500/20 shadow-sm max-w-full text-center">
-              <span className="material-symbols-outlined text-sm shrink-0">verified_user</span>
-              <span className="leading-snug">100% Conforme Legislação Angolana (Lei n.º 14/25 &amp; AGT)</span>
-            </div>
+
           </div>
         </div>
       </section>
@@ -537,10 +521,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 text-transparent" />
-                </div>
-                <div className="px-8 -mt-4 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-emerald-500 text-sm" style={{ fontSize: '16px' }}>verified_user</span>
-                  <span className="text-[10px] font-extrabold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">100% Conforme Lei n.º 14/25 &amp; AGT</span>
                 </div>
                 <div className="px-8 pb-10 space-y-4">
                   <h4 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{func.titulo}</h4>
