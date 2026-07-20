@@ -20,7 +20,8 @@ export const calcularINSS = (salarioBase: number, isPrestador = false, taxa = 0.
 export const calcularIRT = (
   mc: number,
   isPrestador = false,
-  isParticular = false
+  isParticular = false,
+  salarioBase?: number
 ): { valor: number; faixa: string } => {
   if (mc <= 0) return { valor: 0, faixa: '1º Escalão' };
 
@@ -30,6 +31,10 @@ export const calcularIRT = (
 
   if (isPrestador) {
     return { valor: roundMoney(mc * 0.065), faixa: 'Prestador (Taxa Fixa 6,5%)' };
+  }
+
+  if (salarioBase !== undefined && salarioBase <= 150000) {
+    return { valor: 0, faixa: 'Isento' };
   }
 
   const f = [...taxasIRT].reverse().find((b) => mc > b.excesso) ?? taxasIRT[0];

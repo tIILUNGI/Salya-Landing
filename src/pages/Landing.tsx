@@ -33,7 +33,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
   const transporteTrib = Math.max(0, simTransporte - 30000);
   const materiaColectavel = Math.max(0, simSalario + alimentacaoTrib + transporteTrib - inssCalculado);
 
-  const irtResult = calcularIRT(materiaColectavel, simPrestador, simParticular);
+  const irtResult = calcularIRT(materiaColectavel, simPrestador, simParticular, simSalario);
   const irtCalculado = irtResult.valor;
   const faixaAtiva = irtResult.faixa;
 
@@ -275,7 +275,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     type="range" 
                     min="50000" 
                     max="1500000" 
-                    step="25000" 
+                    step="1000" 
                     value={simSalario}
                     onChange={(e) => setSimSalario(Number(e.target.value))}
                     className="w-full accent-primary mt-2" 
@@ -371,7 +371,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     <span className="text-rose-400">-{formatMoney(inssCalculado)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">IRT Retido na Fonte</span>
+                    <span className="text-slate-400">IRT</span>
                     <span className="text-rose-400">-{formatMoney(irtCalculado)}</span>
                   </div>
                   {salarioBrutoTotal > 0 && !simPrestador && (
