@@ -130,7 +130,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             </h2>
 
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-lg font-medium leading-relaxed">
-              A AGT não perdoa erros na folha. O SALYA elimina o risco: cálculos automáticos conforme a Lei n.º 14/25, recibos em PDF e conformidade fiscal garantida — para PMEs, gabinetes e gestores que não têm tempo a perder.
+              A AGT não perdoa erros na folha. O SALYA elimina o risco: cálculos automáticos conforme a Lei n.º 14/25, recibos em PDF e conformidade fiscal garantida para PMEs, gabinetes e gestores que não têm tempo a perder.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 mt-auto">
