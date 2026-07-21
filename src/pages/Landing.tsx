@@ -122,6 +122,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
           {/* Left — text content (PAS Formula) */}
           <div className="flex-1 flex flex-col py-12 md:py-16 space-y-7 z-10 order-2 lg:order-1">
+
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-primary">
               Folha de pagamento angolana, sem planilhas
             </p>
@@ -174,60 +175,28 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
         </div>
       </section>
 
-
-      {/* ── NOTIFICAÇÕES SIMULADAS (MODERN NOTIFICATION TOASTS) ──────────────── */}
-      <section className="py-16 px-6 bg-slate-50/50 dark:bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="group bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:border-primary/20 transition-all flex items-start gap-4">
-              <div className="size-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0 text-primary group-hover:scale-115 transition-transform">
-                <span className="material-symbols-outlined text-2xl">notifications_active</span>
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">SALYA Notificação</span>
-                  <span className="text-[10px] text-slate-400">Agora mesmo</span>
-                </div>
-                <h4 className="text-base font-bold text-slate-800 dark:text-white leading-tight">Massa Salarial Processada</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                  <strong>João Manuel</strong> (Programador Sénior) recebeu o recibo de pagamento no e-mail. Salário Líquido calculado: <strong>242.500 Kz</strong> (INSS 3% e IRT retidos conforme nova lei).
-                </p>
-              </div>
-            </div>
-
-            <div className="group bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:border-primary/20 transition-all flex items-start gap-4">
-              <div className="size-12 bg-indigo-500/10 rounded-xl flex items-center justify-center shrink-0 text-indigo-500 group-hover:scale-115 transition-transform">
-                <span className="material-symbols-outlined text-2xl">verified_user</span>
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Guia Oficial AGT</span>
-                  <span className="text-[10px] text-slate-400">Há 5 min</span>
-                </div>
-                <h4 className="text-base font-bold text-slate-800 dark:text-white leading-tight">Mapa de Férias Compliant</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                  Férias de Julho aprovadas. A escala do departamento de Finanças foi validada contra conflitos de pessoal. Documento de exportação legal AGT pronto em PDF.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="w-full bg-white dark:bg-slate-950">
+        <div className="w-full h-6 bg-gradient-to-b from-white to-slate-50/50 dark:from-slate-950 dark:to-slate-900/30" />
+        <svg
+          className="w-full h-5 md:h-8 text-slate-50/50 dark:text-slate-900/30"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 54"
+          fill="currentColor"
+        >
+          <path d="M0 54V0C0 0 422 54 720 54C1018 54 1440 0 1440 0V54H0Z" />
+        </svg>
+      </div>
 
       {/* ── SIMULADOR DE IRT INTERATIVO (LIVE CALCULATION) ──────────────── */}
-      <section className="py-24 px-6 bg-white dark:bg-slate-950 scroll-mt-20" id="simulador">
+      <section className="pt-8 pb-20 px-6 bg-slate-50/50 dark:bg-slate-900/30 scroll-mt-20" id="simulador">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Cálculo ao Vivo</span>
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Simulador de IRT & INSS de Angola</h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto">
-              Simule o salário líquido estimado, os descontos legais e o custo total para a empresa com base na nova lei em vigor.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Esquerda: Inputs da simulação */}
-            <div className="lg:col-span-7 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 space-y-6">
+            <div className="lg:col-span-7 bg-white dark:bg-slate-900/80 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 space-y-6 shadow-sm">
               <h3 className="text-lg font-bold text-slate-800 dark:text-white">Parâmetros de Cálculo</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
@@ -269,7 +238,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     type="number" 
                     value={simSalario}
                     onChange={(e) => setSimSalario(Math.max(0, Number(e.target.value)))}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
                   />
                   <input 
                     type="range" 
@@ -293,7 +262,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     type="number" 
                     value={simAlimentacao}
                     onChange={(e) => setSimAlimentacao(Math.max(0, Number(e.target.value)))}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
                   />
                   <input 
                     type="range" 
@@ -315,7 +284,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                     type="number" 
                     value={simTransporte}
                     onChange={(e) => setSimTransporte(Math.max(0, Number(e.target.value)))}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-3 font-semibold text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary/20 transition-all font-mono"
                   />
                   <input 
                     type="range" 
@@ -338,7 +307,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <div className="flex justify-between items-center border-b border-slate-800 pb-4">
                   <div>
                     <h3 className="font-bold text-sm tracking-widest text-[#a855f7] uppercase">Simulação de Vencimento</h3>
-                    <p className="text-[11px] text-slate-400 font-mono mt-0.5">ESTADO: RASCUNHO REAL</p>
                   </div>
                   <span className="text-[10px] bg-slate-800 text-slate-350 px-2.5 py-1 rounded-md font-bold uppercase tracking-wider">
                     {faixaAtiva}
@@ -409,44 +377,38 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
       <section className="py-24 px-6 bg-slate-900 overflow-hidden" id="sobre">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="flex-1 space-y-8">
-            <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">A Plataforma</h3>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
               A Solução de <span className="text-primary italic">Folha de Pagamento</span> Líder em Angola.
             </h2>
             <p className="text-lg text-slate-400 leading-relaxed font-medium">
-              O SALYA foi desenhado especificamente para as necessidades das PME&apos;s angolanas, removendo a complexidade técnica e
-              burocrática da folha de pagamento.
+              O SALYA foi desenhado especificamente para as necessidades das PME&apos;s angolanas, removendo a complexidade técnica e burocrocática da folha de pagamento.
             </p>
-
           </div>
           <div className="flex-1 relative w-full lg:w-auto">
             <div className="size-64 bg-primary/20 rounded-full blur-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
             <div className="relative z-10 p-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] shadow-2xl space-y-8">
               <div className="flex items-center gap-5 group">
-                <div className="size-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-emerald-400">verified</span>
+                <div className="size-12 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <img src="/processamento em lote.png" alt="Processamento em Lote" className="w-6 h-6 object-contain" />
                 </div>
                 <div>
-                  <p className="text-white font-bold tracking-tight">Processamento em Lote</p>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5">Eficiência Operacional</p>
+                  <p className="text-white font-bold tracking-tight text-lg">Processamento em Lote</p>
                 </div>
               </div>
               <div className="flex items-center gap-5 group">
-                <div className="size-12 rounded-2xl bg-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-violet-400">description</span>
+                <div className="size-12 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <img src="/recibos oficiais.png" alt="Recibos Oficiais" className="w-6 h-6 object-contain" />
                 </div>
                 <div>
-                  <p className="text-white font-bold tracking-tight">Recibos Oficiais</p>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5">Padrão Corporativo</p>
+                  <p className="text-white font-bold tracking-tight text-lg">Recibos Oficiais</p>
                 </div>
               </div>
               <div className="flex items-center gap-5 group">
-                <div className="size-12 rounded-2xl bg-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-amber-400">analytics</span>
+                <div className="size-12 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <img src="/Dashboards de BI.png" alt="Dashboards de BI" className="w-6 h-6 object-contain" />
                 </div>
                 <div>
-                  <p className="text-white font-bold tracking-tight">Dashboards de BI</p>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5">Dados Inteligentes</p>
+                  <p className="text-white font-bold tracking-tight text-lg">Dashboards de BI</p>
                 </div>
               </div>
             </div>
@@ -457,8 +419,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
       {/* Video Section */}
       <section className="py-24 px-6 bg-white dark:bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-          <div className="flex-1 space-y-6">
-            <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Em Ação</h3>
+          <div className="flex-1 space-y-5">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
               Veja como o <span className="text-primary">SALYA</span> pode transformar o seu negócio.
             </h2>
@@ -471,7 +432,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-3.5 bg-[#25D366] text-white font-bold rounded-2xl shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all"
             >
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="size-5 brightness-0 invert" />
+              <img src="/WhatsApp.png" alt="WhatsApp" className="size-5 object-contain" />
               Seguir Canal Oficial
             </a>
           </div>
@@ -504,8 +465,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       <section className="py-24 px-6 bg-white dark:bg-slate-900" id="funcionalidades">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20 space-y-4">
-            <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Funcionalidades</h3>
+          <div className="text-center mb-14">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Potencialize a sua Gestão</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -534,10 +494,8 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/50 scroll-mt-20" id="planos">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Investimento Inteligente</span>
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Planos que acompanham o seu negócio</h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto">Escolha o plano ideal e garanta conformidade legal absoluta sem necessidade de planilhas complexas.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch pt-4">
@@ -735,16 +693,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
       {/* Secção de Suporte Humanizado */}
       <section className="py-16 px-6 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-950">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-xs font-bold">
-            <span className="material-symbols-outlined text-sm">support_agent</span>
-            Estamos aqui para ajudar
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Dúvidas sobre IRT, INSS ou o plano ideal?
-          </h2>
-          <p className="text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-xl mx-auto">
-            A nossa equipa em Luanda conhece a legislação angolana e responde em minutos. Sem robôs, sem filas — fale connosco como humano para humano.
-          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
               href="https://wa.me/244935793270?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20o%20SALYA."
@@ -752,8 +700,8 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-lg shadow-emerald-500/20 transition-all"
             >
-              <span className="material-symbols-outlined">chat</span>
-              WhatsApp — 935 793 270
+              <img src="/WhatsApp.png" alt="WhatsApp" className="size-5 object-contain" />
+              WhatsApp: 935 793 270
             </a>
             <a
               href="mailto:solucoes@ilungi.ao"
@@ -770,12 +718,12 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
            <div className="flex flex-row items-center gap-4">
              <img src="/logo.png" alt="Salya Logo" className="h-6 w-auto" />
-             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2026 SALYA.Todos os direitos reservados</p>
+             <p className="text-xs text-slate-500 font-medium tracking-wide">© 2026 SALYA. Todos os direitos reservados</p>
            </div>
            <div className="flex items-center gap-6">
              <button
                onClick={onShowTerms}
-               className="text-[10px] text-slate-400 hover:text-primary font-bold uppercase tracking-widest transition-colors"
+               className="text-xs text-slate-500 hover:text-primary font-medium tracking-wide transition-colors"
              >
                Termos de Uso e Política de Privacidade
              </button>
@@ -834,7 +782,6 @@ const Carousel: React.FC = () => {
     <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
-          <h3 className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">Visão do Sistema</h3>
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Experiência Digital Superior</h2>
         </div>
 
@@ -851,9 +798,6 @@ const Carousel: React.FC = () => {
                   <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 p-8 md:p-12 space-y-6 bg-white dark:bg-slate-900">
-                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">
-                    Destaque #{idx + 1}
-                  </div>
                   <h4 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
                     {img.title}
                   </h4>
