@@ -131,7 +131,9 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             </h2>
 
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-lg font-medium leading-relaxed">
-              A AGT não perdoa erros na folha. O SALYA elimina o risco: cálculos automáticos conforme a Lei n.º 14/25, recibos em PDF e conformidade fiscal garantida para PMEs, gabinetes e gestores que não têm tempo a perder.
+              O estado não perdoa erros na folha. E o{' '}
+              <span className="text-primary font-bold">Salya</span>{' '}
+              elimina esse risco: cálculos automáticos conforme a lei, recibos em PDF e conformidade regulatória garantida para gestores que não têm tempo a perder.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 mt-auto">
@@ -147,7 +149,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 onClick={() => scrollToSection('simulador')}
                 className="px-10 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-200/60 dark:border-slate-700 transition-all text-center"
               >
-                Simular IRT ao Vivo
+                Simular Salário ao Vivo
               </button>
             </div>
 
@@ -191,7 +193,9 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
       <section className="pt-8 pb-20 px-6 bg-slate-50/50 dark:bg-slate-900/30 scroll-mt-20" id="simulador">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Simulador de IRT & INSS de Angola</h2>
+            <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Simulador Salarial
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
