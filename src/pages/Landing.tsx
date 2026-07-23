@@ -131,7 +131,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             </h2>
 
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-lg font-medium leading-relaxed">
-              O estado não perdoa erros na folha. E o{' '}
+              O Estado não perdoa erros na folha. E o{' '}
               <span className="text-primary font-bold">Salya</span>{' '}
               elimina esse risco: cálculos automáticos conforme a lei, recibos em PDF e conformidade regulatória garantida para gestores que não têm tempo a perder.
             </p>
