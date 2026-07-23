@@ -149,7 +149,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 onClick={() => scrollToSection('simulador')}
                 className="px-10 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-white text-base font-bold rounded-2xl shadow-soft border border-slate-200/60 dark:border-slate-700 transition-all text-center"
               >
-                Simular Salário ao Vivo
+                Simular Processamento
               </button>
             </div>
 
