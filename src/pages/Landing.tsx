@@ -619,7 +619,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             {/* Plano Profissional - RECOMENDADO */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border-2 border-primary flex flex-col relative shadow-xl z-10 lg:-translate-y-4">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-5 py-1.5 rounded-full shadow-md">
-                Melhor Valor / Recomendado
+                Recomendado
               </div>
 
               <div className="mb-6">
