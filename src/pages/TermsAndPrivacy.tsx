@@ -81,7 +81,7 @@ const TermsAndPrivacy: React.FC<TermsAndPrivacyProps> = ({ onBack }) => {
                 gestão de colaboradores, processamento de folha de pagamento com cálculos
                 automatizados de <strong>IRT</strong> e <strong>INSS</strong>, e emissão de{' '}
                 recibos profissionais em PDF. O <strong>Salya</strong> é um software pago —
-                exceptuando o Plano Demo —, disponível nas modalidades semestral e anual.
+                exceptuando o Plano Demo —, disponível nas modalidades doméstica, profissional e corporativa.
               </p>
             </section>
 

@@ -507,13 +507,12 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             {/* Plano Demo */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-emerald-200/60 dark:border-emerald-900/40 flex flex-col hover:border-emerald-400/40 transition-all shadow-md relative group">
               <div className="mb-6">
-                <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest block mb-2">Experimente Grátis</span>
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Demo</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Teste todas as funcionalidades essenciais sem compromisso.</p>
+                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Demo</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Teste todas as funcionalidades essenciais sem compromisso</p>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">Gratuito</span>
+                <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">GRATUITO</span>
                 <span className="text-sm font-bold text-slate-400 uppercase">/ 24 horas</span>
               </div>
 
@@ -522,23 +521,35 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    IRT &amp; INSS Automáticos
+                    1 entidade (empresa ou particular)
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    1 Entidade &amp; 2 Utilizadores
+                    2 utilizadores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Geração de Recibos em PDF
+                    10 colaboradores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Processamento Salarial Individual
+                    Emissão de 2 recibos
                   </li>
-                  <li className="flex items-center gap-3 text-sm text-amber-600 dark:text-amber-400 font-medium">
-                    <span className="material-symbols-outlined text-amber-500 text-base">schedule</span>
-                    Acesso limitado a 24 horas
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    IRT &amp; INSS Automatizados
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Declaração de trabalho
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Gestão de férias
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Relatório
                   </li>
                 </ul>
               </div>
@@ -551,17 +562,16 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               </a>
             </div>
 
-            {/* Plano Semestral */}
+            {/* Plano Doméstico */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/60 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-md relative group">
               <div className="mb-6">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Para Profissionais</span>
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Semestral</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para gestão doméstica ou micro-empreendedores.</p>
+                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Doméstico</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para gestão doméstica ou microempreendedores</p>
               </div>
-              
+
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-black text-slate-900 dark:text-white">22.800</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">Kz / 6 meses</span>
+                <span className="text-4xl font-black text-slate-900 dark:text-white">57.000</span>
+                <span className="text-sm font-bold text-slate-400 uppercase">KZ / 6 meses</span>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
@@ -569,119 +579,161 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    IRT & INSS 100% Automáticos
+                    1 entidade (particular)
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Geração de Recibos em PDF
+                    1 utilizador
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Declarações de Trabalho em 1 clique
+                    10 colaboradores
                   </li>
-                  <li className="flex items-center gap-3 text-sm text-slate-400 dark:text-slate-655 font-medium line-through">
-                    <span className="material-symbols-outlined text-slate-350 dark:text-slate-700 text-base">cancel</span>
-                    Multi-utilizadores e Gestão de RH
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Emissão de ilimitada de recibos
                   </li>
-                  <li className="flex items-center gap-3 text-sm text-slate-400 dark:text-slate-655 font-medium">
-                    <span className="material-symbols-outlined text-amber-500 text-base">warning</span>
-                    Limitação: Entidade Particular apenas
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    IRT &amp; INSS Automatizados
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Declaração de trabalho
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Relatório
                   </li>
                 </ul>
               </div>
 
-              <a 
-                href={appPath('/registar?plan=SEMESTRAL')} 
+              <a
+                href={appPath('/registar?plan=SEMESTRAL')}
                 className="w-full py-4 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 text-center font-bold rounded-2xl transition-all border border-slate-100 dark:border-slate-700"
               >
                 Começar Agora
               </a>
             </div>
 
-            {/* Plano Anual - RECOMENDADO / POPULAR */}
+            {/* Plano Profissional - RECOMENDADO */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border-2 border-primary flex flex-col relative shadow-xl z-10 lg:-translate-y-4">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-5 py-1.5 rounded-full shadow-md">
                 Melhor Valor / Recomendado
               </div>
-              
+
               <div className="mb-6">
-                <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Para PMEs LGT</span>
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Anual</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Controlo corporativo e conformidade total LGT com a melhor poupança.</p>
+                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Profissional</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para pequenas e médias empresas</p>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-black text-primary">114.000</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">Kz / ano</span>
+                <span className="text-4xl font-black text-primary">129.960</span>
+                <span className="text-sm font-bold text-slate-400 uppercase">KZ / 12 meses</span>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
-                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Recursos Corporativos Completos:</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">O que está incluído:</p>
                 <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-sm text-slate-800 dark:text-slate-300 font-semibold">
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    1 Entidade Corporativa / Empresa
+                    1 entidade (empresa ou particular)
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Processamento Salarial em Lote (Bulk)
+                    2 utilizadores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    IRT & INSS com Ficheiros Oficiais
+                    100 colaboradores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Geração e Exportação de Recibos em PDF
+                    Emissão de ilimitada de recibos
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Gestão Completa de Férias e Faltas
+                    IRT &amp; INSS Automatizados
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Declaração de trabalho
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Gestão de férias
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Relatório
                   </li>
                 </ul>
               </div>
 
-              <a 
-                href={appPath('/registar?plan=ANUAL')} 
+              <a
+                href={appPath('/registar?plan=ANUAL')}
                 className="w-full py-4 bg-primary text-white text-center font-bold rounded-2xl hover:bg-primary/95 hover:scale-[1.02] shadow-lg shadow-primary/20 transition-all block"
               >
-                Subscrever com Desconto Anual
+                Assinar Agora
               </a>
             </div>
 
-            {/* Plano Business / Enterprise */}
+            {/* Plano Corporativo */}
             <div className="bg-white dark:bg-slate-900 p-7 rounded-3xl border border-slate-200/60 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-md relative group">
               <div className="mb-5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Para Grandes Empresas</span>
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Business</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Gestão avançada de múltiplos utilizadores e relatórios de BI personalizados.</p>
+                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Corporativo</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para médias, grandes empresas e consultores que precisam de escalabilidade</p>
               </div>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-black text-slate-900 dark:text-white font-sans">Contactar</span>
+                <span className="text-3xl font-black text-slate-900 dark:text-white font-sans">SOB CONSULTA</span>
               </div>
               <div className="border-t border-slate-100 dark:border-slate-800 pt-5 mb-6 flex-1">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Totalmente Escalável:</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">O que está incluído:</p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Gestão de Utilizadores Ilimitada
+                    1 entidade (empresa ou particular)
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Relatórios Avançados de Business Intelligence
+                    2 utilizadores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Múltiplas Entidades / Consolidação Fiscal
+                    +100 colaboradores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Suporte VIP Dedicado via WhatsApp e Telefone
+                    Emissão de ilimitada de recibos
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    IRT &amp; INSS Automatizados
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Declaração de trabalho
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Gestão de férias
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Relatório
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Simulador de 13º
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Simulador de rescisão de contratos
                   </li>
                 </ul>
               </div>
               <a
-                href="https://wa.me/244935793270?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Plano%20Business%20da%20SALYA."
+                href="https://wa.me/244935793270?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Plano%20Corporativo%20da%20SALYA."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-300 text-center font-bold rounded-2xl transition-all border border-slate-200/50 dark:border-slate-700 text-sm"
