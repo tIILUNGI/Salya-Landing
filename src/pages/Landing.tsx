@@ -684,19 +684,20 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Corporativo</h4>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para médias, grandes empresas e consultores que precisam de escalabilidade</p>
               </div>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-black text-slate-900 dark:text-white font-sans">SOB CONSULTA</span>
+              <div className="flex items-baseline gap-1 mb-8 flex-wrap">
+                <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">SOB CONSULTA</span>
+                <span className="text-xs sm:text-sm font-bold text-slate-400 uppercase">/ 12 meses</span>
               </div>
               <div className="border-t border-slate-100 dark:border-slate-800 pt-5 mb-6 flex-1">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">O que está incluído:</p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    1 entidade (empresa ou particular)
+                    +1 entidade (empresa ou particular)
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    2 utilizadores
+                    +2 utilizadores
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
