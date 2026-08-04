@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { appPath } from '../config/urls';
 import { calcularINSS, calcularIRT, calcularINSSPatronal } from '../utils/taxCalculations';
+import FolhaAngolaSection from '../components/FolhaAngolaSection';
 
 const loginUrl = appPath('/login');
 
@@ -377,6 +378,9 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           </div>
         </div>
       </section>
+
+      {/* ── FOLHA ANGOLA (13.º MÊS E RESCISÃO) ──────────────── */}
+      <FolhaAngolaSection />
 
       <section className="py-24 px-6 bg-slate-900 overflow-hidden" id="sobre">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
