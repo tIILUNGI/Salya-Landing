@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { calcularINSS, calcularIRT, calcularINSSPatronal } from '../utils/taxCalculations';
 
 const API_BASE = (() => {
   const h = window.location.hostname;
@@ -79,7 +80,7 @@ function FormularioRegisto({ onSuccess }: { onSuccess: (lead: LeadInfo) => void 
     <div className="max-w-xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl text-white">
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold tracking-tight">Acesso aos Simuladores</h3>
-        <p className="text-xs text-slate-400 mt-1">Calcule o 13.º mês e a rescisão de contrato conforme a LGT 12/23.</p>
+        <p className="text-xs text-slate-400 mt-1">Calcule o salário líquido, o 13.º mês e a rescisão de contrato conforme a LGT 12/23.</p>
       </div>
 
       <div className="flex bg-slate-950 p-1 rounded-xl mb-6 border border-slate-800">
@@ -373,9 +374,168 @@ function SimuladorRescisao() {
   );
 }
 
+function SimuladorSalarial() {
+  const [simSalario, setSimSalario] = useState<number>(250000);
+  const [simAlimentacao, setSimAlimentacao] = useState<number>(30000);
+  const [simTransporte, setSimTransporte] = useState<number>(25000);
+  const [simPrestador, setSimPrestador] = useState<boolean>(false);
+  const [simParticular, setSimParticular] = useState<boolean>(false);
+
+  const fmt2 = (value: number) =>
+    `${value.toLocaleString('pt-AO', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} Kz`;
+
+  const inssCalculado = simPrestador ? 0 : calcularINSS(simSalario);
+  const alimentacaoTrib = Math.max(0, simAlimentacao - 30000);
+  const transporteTrib = Math.max(0, simTransporte - 30000);
+  const materiaColectavel = Math.max(0, simSalario + alimentacaoTrib + transporteTrib - inssCalculado);
+  const irtResult = calcularIRT(materiaColectavel, simPrestador, simParticular, simSalario);
+  const irtCalculado = irtResult.valor;
+  const faixaAtiva = irtResult.faixa;
+  const inssPatronal = calcularINSSPatronal(simSalario, simPrestador);
+  const custoTotalEmpresa = simPrestador
+    ? simSalario + simAlimentacao + simTransporte
+    : simSalario + simAlimentacao + simTransporte + inssPatronal;
+  const salarioBrutoTotal = simSalario + simAlimentacao + simTransporte;
+  const totalDescontos = inssCalculado + irtCalculado;
+  const salarioLiquido = salarioBrutoTotal - totalDescontos;
+
+  return (
+    <div className="space-y-6">
+      {/* Parâmetros */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Regime Contratual</label>
+          <div className="flex flex-col gap-3">
+            <label className="flex items-center gap-2 text-sm text-slate-300 font-medium cursor-pointer">
+              <input
+                type="checkbox"
+                checked={simPrestador}
+                onChange={(e) => {
+                  setSimPrestador(e.target.checked);
+                  if (e.target.checked) setSimParticular(false);
+                }}
+                className="rounded accent-primary h-4 w-4"
+              />
+              Prestador de Serviço (Independente)
+            </label>
+            <label className="flex items-center gap-2 text-sm text-slate-300 font-medium cursor-pointer">
+              <input
+                type="checkbox"
+                checked={simParticular}
+                onChange={(e) => {
+                  setSimParticular(e.target.checked);
+                  if (e.target.checked) setSimPrestador(false);
+                }}
+                className="rounded accent-primary h-4 w-4"
+              />
+              Trabalho Particular / Doméstico
+            </label>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Salário Base (Kz)</label>
+            <span className="text-xs font-bold text-primary font-mono">{fmt2(simSalario)}</span>
+          </div>
+          <input
+            type="number"
+            value={simSalario}
+            onChange={(e) => setSimSalario(Math.max(0, Number(e.target.value)))}
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-semibold text-white outline-none focus:border-primary transition-all font-mono"
+          />
+          <input
+            type="range" min="50000" max="1500000" step="1000" value={simSalario}
+            onChange={(e) => setSimSalario(Number(e.target.value))}
+            className="w-full accent-primary mt-2"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Sub. Alimentação</label>
+            <span className="text-xs font-medium text-slate-400 font-mono">{fmt2(simAlimentacao)}</span>
+          </div>
+          <input
+            type="number" value={simAlimentacao}
+            onChange={(e) => setSimAlimentacao(Math.max(0, Number(e.target.value)))}
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-semibold text-white outline-none focus:border-primary transition-all font-mono"
+          />
+          <input
+            type="range" min="0" max="100000" step="5000" value={simAlimentacao}
+            onChange={(e) => setSimAlimentacao(Number(e.target.value))}
+            className="w-full accent-primary mt-2"
+          />
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Sub. Transporte</label>
+            <span className="text-xs font-medium text-slate-400 font-mono">{fmt2(simTransporte)}</span>
+          </div>
+          <input
+            type="number" value={simTransporte}
+            onChange={(e) => setSimTransporte(Math.max(0, Number(e.target.value)))}
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-semibold text-white outline-none focus:border-primary transition-all font-mono"
+          />
+          <input
+            type="range" min="0" max="100000" step="5000" value={simTransporte}
+            onChange={(e) => setSimTransporte(Number(e.target.value))}
+            className="w-full accent-primary mt-2"
+          />
+        </div>
+      </div>
+
+      {/* Resultado */}
+      <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+          <h4 className="font-bold text-white text-xs uppercase tracking-widest">Simulação de Vencimento</h4>
+          <span className="text-[10px] bg-slate-900 text-slate-400 px-2.5 py-1 rounded-md font-bold uppercase tracking-wider border border-slate-800">
+            {faixaAtiva}
+          </span>
+        </div>
+
+        <div className="space-y-2.5 font-mono text-xs">
+          <div className="flex justify-between"><span className="text-slate-400">Salário Base</span><span className="text-slate-200">{fmt2(simSalario)}</span></div>
+          <div className="flex justify-between"><span className="text-slate-400">Sub. Alimentação</span><span className="text-slate-200">{fmt2(simAlimentacao)}</span></div>
+          <div className="flex justify-between"><span className="text-slate-400">Sub. Transporte</span><span className="text-slate-200">{fmt2(simTransporte)}</span></div>
+          <div className="flex justify-between font-bold text-sm pt-2 border-t border-dashed border-slate-800">
+            <span className="text-slate-300">Total Rendimentos</span>
+            <span className="text-white">{fmt2(salarioBrutoTotal)}</span>
+          </div>
+        </div>
+
+        <div className="space-y-2.5 font-mono text-xs pt-3 border-t border-slate-800">
+          <p className="text-[10px] font-bold text-rose-400 uppercase tracking-widest">Descontos Retidos</p>
+          <div className="flex justify-between"><span className="text-slate-400">INSS (3% Trabalhador)</span><span className="text-rose-400">-{fmt2(inssCalculado)}</span></div>
+          <div className="flex justify-between"><span className="text-slate-400">IRT</span><span className="text-rose-400">-{fmt2(irtCalculado)}</span></div>
+          {salarioBrutoTotal > 0 && !simPrestador && (
+            <div className="flex justify-between pt-1 border-t border-slate-800/50">
+              <span className="text-slate-400">INSS Patronal (8% Empresa)</span>
+              <span className="text-amber-400 font-bold">+{fmt2(inssPatronal)}</span>
+            </div>
+          )}
+        </div>
+
+        <div className="pt-4 border-t border-slate-800 flex justify-between items-end">
+          <div>
+            <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-1">Salário Líquido</p>
+            <p className="text-2xl font-black tracking-tight text-white">{fmt2(salarioLiquido)}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Custo Real Empresa</p>
+            <p className="text-sm font-bold text-slate-300">{fmt2(custoTotalEmpresa)}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FolhaAngolaSection() {
   const [lead, setLead] = useState<LeadInfo | null>(null);
-  const [simuladorAtivo, setSimuladorAtivo] = useState<'d13' | 'rescisao'>('d13');
+  const [simuladorAtivo, setSimuladorAtivo] = useState<'salarial' | 'd13' | 'rescisao'>('salarial');
 
   useEffect(() => {
     try {
@@ -403,7 +563,7 @@ export default function FolhaAngolaSection() {
             Folha <span className="text-primary italic">Angola</span>
           </h2>
           <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-medium">
-            Calculadoras de 13.º Mês e Rescisão de Contrato segundo a <strong>Lei Geral do Trabalho n.º 12/23</strong> e a tabela de IRT da AGT.
+            Simulador salarial, calculadoras de 13.º Mês e Rescisão de Contrato segundo a <strong>Lei Geral do Trabalho n.º 12/23</strong> e a tabela de IRT da AGT.
           </p>
         </div>
 
@@ -425,18 +585,24 @@ export default function FolhaAngolaSection() {
             </div>
 
             <div className="flex border-b border-slate-800 bg-slate-950/50">
+              <button onClick={() => setSimuladorAtivo('salarial')}
+                className={`flex-1 py-4 text-xs font-bold uppercase tracking-widest transition-all ${simuladorAtivo === 'salarial' ? 'text-primary border-b-2 border-primary bg-primary/10' : 'text-slate-400 hover:text-slate-200'}`}>
+                Simulador Salarial
+              </button>
               <button onClick={() => setSimuladorAtivo('d13')}
                 className={`flex-1 py-4 text-xs font-bold uppercase tracking-widest transition-all ${simuladorAtivo === 'd13' ? 'text-primary border-b-2 border-primary bg-primary/10' : 'text-slate-400 hover:text-slate-200'}`}>
                 Simulador de 13.º Mês
               </button>
               <button onClick={() => setSimuladorAtivo('rescisao')}
                 className={`flex-1 py-4 text-xs font-bold uppercase tracking-widest transition-all ${simuladorAtivo === 'rescisao' ? 'text-primary border-b-2 border-primary bg-primary/10' : 'text-slate-400 hover:text-slate-200'}`}>
-                Simulador de Rescisão de Contrato
+                Simulador de Rescisão
               </button>
             </div>
 
             <div className="p-8">
-              {simuladorAtivo === 'd13' ? <SimuladorDecimoTerceiro /> : <SimuladorRescisao />}
+              {simuladorAtivo === 'salarial' && <SimuladorSalarial />}
+              {simuladorAtivo === 'd13' && <SimuladorDecimoTerceiro />}
+              {simuladorAtivo === 'rescisao' && <SimuladorRescisao />}
             </div>
           </div>
         )}
