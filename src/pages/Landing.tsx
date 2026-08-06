@@ -302,7 +302,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">GRATUITO</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">/ 24 horas</span>
+                <span className="text-sm font-bold text-slate-400 uppercase">/ 30 dias</span>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
