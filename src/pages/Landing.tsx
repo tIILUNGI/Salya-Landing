@@ -16,6 +16,7 @@ const HERO_IMAGES = [
 const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
+  const [billingCycle, setBillingCycle] = useState<'MENSAL' | 'ANUAL'>('MENSAL');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -287,8 +288,33 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/50 scroll-mt-20" id="planos">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Planos que acompanham o seu negócio</h2>
+            <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium">Escolha a modalidade de pagamento que melhor se adapta às suas necessidades</p>
+          </div>
+
+          {/* Seletor Mensal / Anual */}
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <span 
+              onClick={() => setBillingCycle('MENSAL')} 
+              className={`text-sm font-bold cursor-pointer transition-colors ${billingCycle === 'MENSAL' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}
+            >
+              Pagamento Mensal
+            </span>
+            <button
+              type="button"
+              onClick={() => setBillingCycle(billingCycle === 'MENSAL' ? 'ANUAL' : 'MENSAL')}
+              className="relative w-14 h-8 bg-slate-200 dark:bg-slate-700 rounded-full p-1 transition-colors outline-none"
+              title="Alternar entre Pagamento Mensal e Anual"
+            >
+              <div className={`w-6 h-6 bg-emerald-500 rounded-full shadow-md transform transition-transform ${billingCycle === 'ANUAL' ? 'translate-x-6' : 'translate-x-0'}`} />
+            </button>
+            <span 
+              onClick={() => setBillingCycle('ANUAL')} 
+              className={`text-sm font-bold cursor-pointer transition-colors ${billingCycle === 'ANUAL' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}
+            >
+              Pagamento Anual
+            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch pt-4">
@@ -297,17 +323,21 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-emerald-200/60 dark:border-emerald-900/40 flex flex-col hover:border-emerald-400/40 transition-all shadow-md relative group">
               <div className="mb-6">
                 <h4 className="text-2xl font-black text-slate-800 dark:text-white">Demo</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Teste todas as funcionalidades essenciais sem compromisso</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">7 dias de acesso total ao sistema sem compromisso</p>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">GRATUITO</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">/ 30 dias</span>
+                <span className="text-sm font-bold text-slate-400 uppercase">/ 7 dias</span>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">O que está incluído:</p>
                 <ul className="space-y-4">
+                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
+                    Acesso total ao sistema
+                  </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
                     1 entidade (empresa ou particular)
@@ -318,11 +348,11 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    10 colaboradores
+                    Colaboradores ilimitados
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Emissão de 2 recibos
+                    Emissão ilimitada de recibos
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
@@ -330,15 +360,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Declaração de trabalho
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Gestão de férias
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Relatório
+                    Declaração de trabalho &amp; Relatórios
                   </li>
                 </ul>
               </div>
@@ -347,20 +369,26 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 href={appPath('/registar?plan=DEMO')}
                 className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white text-center font-bold rounded-2xl transition-all shadow-lg shadow-emerald-500/20"
               >
-                Testar Grátis
+                Testar Grátis 7 Dias
               </a>
             </div>
 
-            {/* Plano Doméstico */}
+            {/* Plano Micro Empresa */}
             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/60 dark:border-slate-800 flex flex-col hover:border-primary/20 transition-all shadow-md relative group">
               <div className="mb-6">
-                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Plano Doméstico</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para gestão doméstica ou microempreendedores</p>
+                <h4 className="text-2xl font-black text-slate-800 dark:text-white">Micro Empresa</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para micro empresas e famílias com trabalhadores domésticos</p>
               </div>
 
-              <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-black text-slate-900 dark:text-white">57.000</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">KZ / 6 meses</span>
+              <div className="flex flex-col mb-8">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-slate-900 dark:text-white">
+                    {billingCycle === 'MENSAL' ? '5.700' : '68.400'}
+                  </span>
+                  <span className="text-sm font-bold text-slate-400 uppercase">
+                    KZ / {billingCycle === 'MENSAL' ? 'mês' : 'ano'}
+                  </span>
+                </div>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
@@ -368,7 +396,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    1 entidade (particular)
+                    1 entidade
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
@@ -380,7 +408,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Emissão de ilimitada de recibos
+                    Emissão ilimitada de recibos
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
@@ -388,17 +416,13 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Declaração de trabalho
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Relatório
+                    Declaração de trabalho &amp; Relatórios
                   </li>
                 </ul>
               </div>
 
               <a
-                href={appPath('/registar?plan=SEMESTRAL')}
+                href={appPath(`/registar?plan=SEMESTRAL&cycle=${billingCycle}`)}
                 className="w-full py-4 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 text-center font-bold rounded-2xl transition-all border border-slate-100 dark:border-slate-700"
               >
                 Começar Agora
@@ -416,9 +440,15 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">Ideal para pequenas e médias empresas</p>
               </div>
 
-              <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-black text-primary">129.960</span>
-                <span className="text-sm font-bold text-slate-400 uppercase">KZ / 12 meses</span>
+              <div className="flex flex-col mb-8">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-primary">
+                    {billingCycle === 'MENSAL' ? '10.830' : '129.960'}
+                  </span>
+                  <span className="text-sm font-bold text-slate-400 uppercase">
+                    KZ / {billingCycle === 'MENSAL' ? 'mês' : 'ano'}
+                  </span>
+                </div>
               </div>
 
               <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8 flex-1">
@@ -438,7 +468,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Emissão de ilimitada de recibos
+                    Emissão ilimitada de recibos
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
@@ -446,21 +476,21 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Declaração de trabalho
+                    Acesso a Biometria &amp; Assiduidade
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Gestão de férias
+                    Declaração de trabalho &amp; Férias
                   </li>
                   <li className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 font-medium">
                     <span className="material-symbols-outlined text-emerald-500 text-base">check_circle</span>
-                    Relatório
+                    Relatórios avançados
                   </li>
                 </ul>
               </div>
 
               <a
-                href={appPath('/registar?plan=ANUAL')}
+                href={appPath(`/registar?plan=ANUAL&cycle=${billingCycle}`)}
                 className="w-full py-4 bg-primary text-white text-center font-bold rounded-2xl hover:bg-primary/95 hover:scale-[1.02] shadow-lg shadow-primary/20 transition-all block"
               >
                 Assinar Agora
