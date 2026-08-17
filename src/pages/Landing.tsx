@@ -580,11 +580,11 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               WhatsApp: 935 793 270
             </a>
             <a
-              href="mailto:solucoes@ilungi.ao"
+              href="mailto:geral@ilungi.co.ao"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-2xl hover:border-primary/30 transition-all"
             >
               <span className="material-symbols-outlined">mail</span>
-              solucoes@ilungi.ao
+              geral@ilungi.co.ao
             </a>
           </div>
         </div>
