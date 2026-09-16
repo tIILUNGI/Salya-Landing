@@ -1,0 +1,26 @@
+{
+  "short_name": "SALYA",
+  "name": "SALYA — Gestão de Folha de Pagamento em Angola",
+  "description": "Sistema moderno de gestão e processamento de folha de pagamento para empresas em Angola.",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#9333ea",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["business", "finance", "productivity"],
+  "lang": "pt-AO"
+}

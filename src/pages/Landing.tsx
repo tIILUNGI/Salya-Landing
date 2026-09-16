@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { appPath } from '../config/urls';
 import FolhaAngolaSection from '../components/FolhaAngolaSection';
+import PwaInstallPrompt from '../components/PwaInstallPrompt';
 
 const loginUrl = appPath('/login');
 
@@ -58,6 +59,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 font-app selection:bg-primary/10 selection:text-primary">
+      <PwaInstallPrompt />
       <header className="border-b border-slate-100 dark:border-slate-800 sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group">
