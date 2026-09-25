@@ -28,27 +28,27 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
   const funcionalidades = [
     {
-      titulo: 'Gestão de Colaboradores',
+      titulo: 'Gestão Inteligente de Colaboradores',
       descricao:
         'Controle completo sobre dados pessoais, contratuais e histórico profissional da sua equipa em um ambiente centralizado.',
       imagem: '/Colaborador.png',
     },
     {
-      titulo: 'Folha de Pagamento Profissional',
+      titulo: 'Folha de Pagamento Automatizada',
       descricao:
-        'Cálculos automatizados de IRT e INSS em conformidade total com a legislação angolana e o Decreto Presidencial.',
-      imagem: '/Processamento.png',
+        'Cálculos automatizados de IRT e INSS em conformidade total com a legislação angolana e os regulamentos da AGT.',
+      imagem: '/Folha de Pagamento.png',
     },
     {
-      titulo: 'Geração de Recibos em PDF',
+      titulo: 'Emissão Instantânea de Recibos em PDF',
       descricao:
-        'Emita recibos de vencimento detalhados e profissionais com apenas um clique, prontos para partilha digital segura.',
-      imagem: '/Recibos .jpeg',
+        'Emita recibos de vencimento detalhados e profissionais em PDF com apenas um clique, prontos para envio aos trabalhadores.',
+      imagem: '/Recibos.jpeg',
     },
     {
-      titulo: 'Relatórios & Business Intelligence',
+      titulo: 'Relatórios Executivos & Business Intelligence',
       descricao:
-        'Aceda a métricas precisas sobre a sua folha de pagamento e exporte relatórios mensais fundamentais para a sua gestão.',
+        'Aceda a métricas precisas sobre a sua folha de pagamento, custos patronais e exporte relatórios consolidados para contabilidade.',
       imagem: '/Relatorios.png',
     },
   ];
@@ -239,18 +239,22 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               className="relative rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center cursor-pointer"
             >
               <div className="absolute inset-0 z-20 flex items-center justify-center group/btn">
-                <div className="size-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover/btn:scale-110 group-hover/btn:bg-white/30 transition-all">
+                <div className="size-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover/btn:scale-110 group-hover:bg-primary transition-all">
                   <span className="material-symbols-outlined text-white text-5xl">play_circle</span>
                 </div>
               </div>
               <video 
-                src="/mov.mp4" 
+                poster="/Arte 3.png"
                 autoPlay 
                 muted 
                 loop 
                 playsInline
+                preload="auto"
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-              />
+              >
+                <source src="/mov.mp4" type="video/mp4" />
+                Seu navegador não suporta a exibição deste vídeo.
+              </video>
             </div>
           </div>
         </div>
@@ -261,26 +265,32 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
 
       <section className="py-24 px-6 bg-white dark:bg-slate-900" id="funcionalidades">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Potencialize a sua Gestão</h2>
+          <div className="text-center mb-14 space-y-3">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest px-3 py-1 bg-primary/10 rounded-full inline-block">
+              Recursos de Alta Performance
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Potencialize a sua Gestão</h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium text-base">
+              Conheça as novas funcionalidades visuais e ferramentas exclusivas desenvolvidas para otimizar os seus processos corporativos.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {funcionalidades.map((func, index) => (
               <div
                 key={index}
-                className="group flex flex-col gap-8 p-1 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 hover:border-primary/20 transition-all overflow-hidden shadow-soft"
+                className="group flex flex-col justify-between p-2 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all overflow-hidden shadow-soft hover:shadow-2xl hover:-translate-y-1"
               >
-                <div className="relative h-72 overflow-hidden rounded-[2.2rem]">
+                <div className="relative h-64 overflow-hidden rounded-[2.2rem] bg-slate-100 dark:bg-slate-900">
                   <img
                     src={func.imagem}
                     alt={func.titulo}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 text-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
                 </div>
-                <div className="px-8 pb-10 space-y-4">
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{func.titulo}</h4>
-                  <p className="text-slate-500 leading-relaxed font-medium">{func.descricao}</p>
+                <div className="px-6 py-6 space-y-3 flex-1 flex flex-col justify-between">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">{func.titulo}</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">{func.descricao}</p>
                 </div>
               </div>
             ))}
@@ -621,11 +631,15 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           
           <div className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black">
             <video 
-              src="/mov.mp4" 
               autoPlay 
               controls 
+              preload="auto"
+              playsInline
               className="w-full h-full object-contain"
-            />
+            >
+              <source src="/mov.mp4" type="video/mp4" />
+              O seu navegador não suporta a reprodução deste vídeo.
+            </video>
           </div>
         </div>
       )}
@@ -637,13 +651,28 @@ const Carousel: React.FC = () => {
   const images = [
     {
       src: '/Arte 1 - 1x1.jpg.jpeg',
-      title: 'Simplicidade & Eficiência',
-      description: 'Tenha o controle total da sua folha de pagamento em poucos cliques. Design intuitivo focado na produtividade do seu RH.'
+      title: 'Gestão Inteligente & Eficiência',
+      description: 'Tenha o controle total da sua folha de pagamento em poucos cliques. Design intuitivo focado na produtividade da sua equipa de RH.'
     },
     {
       src: '/Arte 2 - 1x1b.jpg.jpeg',
-      title: 'Cálculos Inteligentes',
-      description: 'Automatização precisa de IRT e INSS conforme a lei angolana. Reduza erros e economize tempo valioso todos os meses.'
+      title: 'Cálculos Automáticos e Precisos',
+      description: 'Automatização completa do IRT e INSS em estrita conformidade com a legislação angolana. Reduza erros e economize tempo todos os meses.'
+    },
+    {
+      src: '/Arte 3.png',
+      title: 'Recibos Oficiais em PDF',
+      description: 'Emissão profissional de recibos de vencimento elegíveis e prontos para distribuição com segurança e rastreabilidade.'
+    },
+    {
+      src: '/Arte 4.png',
+      title: 'Dashboards & Métricas de BI',
+      description: 'Visão executiva em tempo real com gráficos interativos e relatórios consolidados sobre custos salariais e tributários.'
+    },
+    {
+      src: '/Arte 5.jpeg',
+      title: 'Conformidade Regulamentar Garantida',
+      description: 'Total alinhamento com o Decreto Presidencial e a LGT 12/23. Simuladores avançados para cálculo de 13.º Mês e rescisões.'
     }
   ];
 
@@ -660,7 +689,10 @@ const Carousel: React.FC = () => {
     <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Experiência Digital Superior</h2>
+          <span className="text-xs font-bold text-primary uppercase tracking-widest px-3 py-1 bg-primary/10 rounded-full inline-block">
+            Galeria de Apresentação
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Experiência Digital Superior</h2>
         </div>
 
         <div className="relative group">
@@ -672,19 +704,29 @@ const Carousel: React.FC = () => {
                   idx === activeIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'
                 }`}
               >
-                <div className="flex-1 h-full w-full">
+                <div className="flex-1 h-full w-full overflow-hidden bg-slate-900">
                   <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
                 </div>
-                <div className="flex-1 p-8 md:p-12 space-y-6 bg-white dark:bg-slate-900">
-                  <h4 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
-                    {img.title}
-                  </h4>
-                  <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
-                    {img.description}
-                  </p>
-                  <div className="pt-4 flex gap-4">
-                    <button onClick={() => setActiveIndex(0)} title="Slide 1" aria-label="Ir para o slide 1" className={`size-3 rounded-full transition-all ${activeIndex === 0 ? 'bg-primary w-8' : 'bg-slate-200 dark:bg-slate-700'}`} />
-                    <button onClick={() => setActiveIndex(1)} title="Slide 2" aria-label="Ir para o slide 2" className={`size-3 rounded-full transition-all ${activeIndex === 1 ? 'bg-primary w-8' : 'bg-slate-200 dark:bg-slate-700'}`} />
+                <div className="flex-1 p-8 md:p-12 space-y-6 bg-white dark:bg-slate-900 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Arte {idx + 1} de {images.length}</span>
+                    <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight">
+                      {img.title}
+                    </h4>
+                    <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                      {img.description}
+                    </p>
+                  </div>
+                  <div className="pt-4 flex items-center gap-3">
+                    {images.map((_, dotIdx) => (
+                      <button 
+                        key={dotIdx}
+                        onClick={() => setActiveIndex(dotIdx)} 
+                        title={`Ir para Arte ${dotIdx + 1}`} 
+                        aria-label={`Ir para Arte ${dotIdx + 1}`} 
+                        className={`h-3 rounded-full transition-all cursor-pointer ${dotIdx === activeIndex ? 'bg-primary w-8' : 'bg-slate-200 dark:bg-slate-700 w-3 hover:bg-primary/50'}`} 
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -695,7 +737,7 @@ const Carousel: React.FC = () => {
             onClick={() => setActiveIndex((prev) => (prev - 1 + images.length) % images.length)}
             title="Slide Anterior"
             aria-label="Ir para o slide anterior"
-            className="absolute left-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30"
+            className="absolute left-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30 cursor-pointer"
           >
             <span className="material-symbols-outlined">chevron_left</span>
           </button>
@@ -703,7 +745,7 @@ const Carousel: React.FC = () => {
             onClick={() => setActiveIndex((prev) => (prev + 1) % images.length)}
             title="Próximo Slide"
             aria-label="Ir para o próximo slide"
-            className="absolute right-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30"
+            className="absolute right-4 top-1/2 -translate-y-1/2 size-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all hidden md:flex z-30 cursor-pointer"
           >
             <span className="material-symbols-outlined">chevron_right</span>
           </button>

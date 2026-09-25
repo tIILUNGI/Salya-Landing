@@ -26,27 +26,19 @@
     <title>SALYA — Folha de Pagamento</title>
     <link rel="icon" href="/logo.png" />
 
-    <!-- Preload critical fonts to prevent FOUC -->
+    <!-- Fast Google Fonts with font-display: swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-
-    <!-- Prevent FOUC: hide root until fonts are ready, show splash screen -->
+    <!-- Instant Load Styles -->
     <style>
       html { background: #0f172a; }
       #root {
-        opacity: 0;
-        transition: opacity 0.25s ease;
-      }
-      #root.fonts-ready {
         opacity: 1;
       }
       .material-symbols-outlined {
-        font-family: 'Material Symbols Outlined';
+        font-family: 'Material Symbols Outlined', sans-serif;
         font-size: 24px;
         font-weight: normal;
         font-style: normal;
@@ -60,10 +52,6 @@
         -webkit-font-feature-settings: 'liga';
         font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
-        visibility: hidden;
-      }
-      .fonts-loaded .material-symbols-outlined {
-        visibility: visible;
       }
       #salya-splash {
         position: fixed;
@@ -75,7 +63,7 @@
         align-items: center;
         justify-content: center;
         gap: 16px;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.2s ease;
       }
       #salya-splash.hidden {
         opacity: 0;
@@ -104,26 +92,24 @@
     <script>
       function revealApp() {
         document.documentElement.classList.add('fonts-loaded');
-        var root = document.getElementById('root');
-        if (root) root.classList.add('fonts-ready');
         var splash = document.getElementById('salya-splash');
-        if (splash) {
+        if (splash && !splash.classList.contains('hidden')) {
           splash.classList.add('hidden');
-          setTimeout(function() { splash.remove(); }, 350);
+          setTimeout(function() { if (splash) splash.remove(); }, 200);
         }
       }
 
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(revealApp);
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(revealApp, 50);
       } else {
-        setTimeout(revealApp, 800);
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(revealApp, 50); });
       }
-      setTimeout(revealApp, 2000);
+      setTimeout(revealApp, 200);
 
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('/sw.js').catch(function(err) {
-            console.log('ServiceWorker error:', err);
+            console.log('ServiceWorker info:', err);
           });
         });
       }
