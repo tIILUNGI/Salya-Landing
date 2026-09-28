@@ -748,9 +748,6 @@ export default function FolhaAngolaSection() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-10">
-          <span className="inline-block px-3 py-1 bg-slate-900 border border-slate-800 text-primary text-[11px] font-bold uppercase tracking-widest rounded-full mb-3">
-            Módulo Folha Angola
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
             Folha <span className="text-primary italic">Angola</span>
           </h2>

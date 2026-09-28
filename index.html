@@ -26,10 +26,11 @@
     <title>SALYA — Folha de Pagamento</title>
     <link rel="icon" href="/logo.png" />
 
-    <!-- Fast Google Fonts with font-display: swap -->
+    <!-- Fast Google Fonts with optimized icon font display -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" />
 
     <!-- Instant Load Styles -->
     <style>
@@ -52,6 +53,12 @@
         -webkit-font-feature-settings: 'liga';
         font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
+        color: transparent;
+        user-select: none;
+      }
+      .fonts-loaded .material-symbols-outlined,
+      html:not(.loading) .material-symbols-outlined {
+        color: inherit;
       }
       #salya-splash {
         position: fixed;
@@ -97,6 +104,10 @@
           splash.classList.add('hidden');
           setTimeout(function() { if (splash) splash.remove(); }, 200);
         }
+      }
+
+      if ('fonts' in document) {
+        document.fonts.ready.then(revealApp);
       }
 
       if (document.readyState === 'complete' || document.readyState === 'interactive') {

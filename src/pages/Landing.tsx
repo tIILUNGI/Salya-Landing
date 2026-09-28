@@ -266,9 +266,6 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
       <section className="py-24 px-6 bg-white dark:bg-slate-900" id="funcionalidades">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 space-y-3">
-            <span className="text-xs font-bold text-primary uppercase tracking-widest px-3 py-1 bg-primary/10 rounded-full inline-block">
-              Recursos de Alta Performance
-            </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Potencialize a sua Gestão</h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium text-base">
               Conheça as novas funcionalidades visuais e ferramentas exclusivas desenvolvidas para otimizar os seus processos corporativos.
@@ -689,9 +686,6 @@ const Carousel: React.FC = () => {
     <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
-          <span className="text-xs font-bold text-primary uppercase tracking-widest px-3 py-1 bg-primary/10 rounded-full inline-block">
-            Galeria de Apresentação
-          </span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Experiência Digital Superior</h2>
         </div>
 
@@ -709,7 +703,6 @@ const Carousel: React.FC = () => {
                 </div>
                 <div className="flex-1 p-8 md:p-12 space-y-6 bg-white dark:bg-slate-900 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Arte {idx + 1} de {images.length}</span>
                     <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight">
                       {img.title}
                     </h4>
