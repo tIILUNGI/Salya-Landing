@@ -81,6 +81,14 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               >
                 Funcionalidades
               </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection('voucher')}
+                className="text-sm font-black text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-1.5"
+              >
+                <span className="material-symbols-outlined text-base text-yellow-500">confirmation_number</span>
+                Voucher Grátis
+              </button>
             </nav>
             <div className="flex items-center gap-3">
               <a
@@ -572,6 +580,97 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
             </div>
             
           </div>
+        </div>
+      </section>
+
+      {/* ── VOUCHER SALYA60D ───────────────────────────────────── */}
+      <section id="voucher" className="py-24 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 overflow-hidden relative">
+        <div className="absolute -top-32 -right-32 size-[500px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 size-[400px] bg-indigo-600/15 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/15 px-5 py-2 rounded-full">
+              <span className="material-symbols-outlined text-yellow-400 text-lg">workspace_premium</span>
+              <span className="text-[11px] font-black tracking-widest uppercase text-purple-200">Oferta Especial</span>
+            </div>
+          </div>
+
+          <div className="text-center mb-14 space-y-5">
+            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight">
+              60 Dias de SALYA,
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-yellow-300"> completamente GRÁTIS</span>
+            </h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
+              Experimente o sistema de folha de pagamento mais avançado de Angola. Sem cartão de crédito, sem compromissos. Ative o voucher <strong className="text-white">SALYA60D</strong> e comece hoje.
+            </p>
+          </div>
+
+          {/* Ticket Visual */}
+          <div className="max-w-2xl mx-auto mb-14">
+            <div className="relative bg-gradient-to-r from-purple-700/80 to-indigo-800/80 backdrop-blur-xl border border-white/15 rounded-[2.5rem] p-8 shadow-2xl overflow-hidden">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 size-8 bg-slate-950 rounded-full" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 size-8 bg-slate-950 rounded-full" />
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-center md:text-left space-y-2">
+                  <p className="text-[10px] font-black tracking-widest text-purple-300 uppercase">Código Promocional</p>
+                  <div className="text-4xl font-black tracking-wider text-white font-mono">SALYA60D</div>
+                  <div className="flex items-center justify-center md:justify-start gap-2 text-purple-200 text-sm font-semibold">
+                    <span className="material-symbols-outlined text-base">calendar_month</span>
+                    60 dias de acesso total • Plano Corporativo
+                  </div>
+                </div>
+                <div className="size-20 rounded-3xl bg-white/15 backdrop-blur border border-white/20 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-5xl text-yellow-300">redeem</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Dois caminhos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <a
+              href={appPath('/login')}
+              className="group p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-purple-400/40 rounded-[1.75rem] transition-all text-center space-y-4 block"
+            >
+              <div className="size-14 rounded-2xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-3xl text-purple-300">login</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-white mb-1">Já tenho conta</h3>
+                <p className="text-sm text-slate-400 font-medium">
+                  Aceda à sua conta e ative o voucher em <span className="text-purple-300 font-bold">Configurações → Plano</span>.
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-sm transition-all">
+                Entrar na conta
+                <span className="material-symbols-outlined text-base">arrow_forward</span>
+              </div>
+            </a>
+
+            <a
+              href={appPath('/registar?voucher=SALYA60D')}
+              className="group p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-yellow-400/40 rounded-[1.75rem] transition-all text-center space-y-4 block"
+            >
+              <div className="size-14 rounded-2xl bg-yellow-500/20 border border-yellow-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-3xl text-yellow-300">person_add</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-white mb-1">Criar conta nova</h3>
+                <p className="text-sm text-slate-400 font-medium">
+                  Registe-se gratuitamente e ative o voucher <span className="text-yellow-300 font-bold">após o primeiro login</span> em Configurações.
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-slate-900 font-bold rounded-xl text-sm transition-all shadow-lg shadow-yellow-500/20">
+                Criar conta grátis
+                <span className="material-symbols-outlined text-base">star</span>
+              </div>
+            </a>
+          </div>
+
+          <p className="text-center text-xs text-slate-500 mt-8 font-medium">
+            Voucher válido por tempo limitado · Uma ativação por conta · Sem cartão de crédito
+          </p>
         </div>
       </section>
 

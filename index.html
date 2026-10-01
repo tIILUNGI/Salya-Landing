@@ -53,12 +53,11 @@
         -webkit-font-feature-settings: 'liga';
         font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
-        color: transparent;
+        font-display: block;
         user-select: none;
       }
-      .fonts-loaded .material-symbols-outlined,
-      html:not(.loading) .material-symbols-outlined {
-        color: inherit;
+      html:not(.fonts-loaded) .material-symbols-outlined {
+        color: transparent !important;
       }
       #salya-splash {
         position: fixed;
@@ -97,8 +96,7 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <script>
-      function revealApp() {
-        document.documentElement.classList.add('fonts-loaded');
+      function hideSplash() {
         var splash = document.getElementById('salya-splash');
         if (splash && !splash.classList.contains('hidden')) {
           splash.classList.add('hidden');
@@ -106,16 +104,24 @@
         }
       }
 
+      function markFontsLoaded() {
+        document.documentElement.classList.add('fonts-loaded');
+      }
+
       if ('fonts' in document) {
-        document.fonts.ready.then(revealApp);
+        document.fonts.load('24px "Material Symbols Outlined"').then(markFontsLoaded).catch(markFontsLoaded);
+        document.fonts.ready.then(function() {
+          markFontsLoaded();
+          hideSplash();
+        });
       }
 
       if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(revealApp, 50);
+        setTimeout(hideSplash, 150);
       } else {
-        document.addEventListener('DOMContentLoaded', function() { setTimeout(revealApp, 50); });
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(hideSplash, 150); });
       }
-      setTimeout(revealApp, 200);
+      setTimeout(hideSplash, 1000);
 
       if ('serviceWorker' in navigator && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
         window.addEventListener('load', function() {
