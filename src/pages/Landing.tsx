@@ -607,68 +607,68 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           </div>
 
           {/* Ticket Visual */}
-          <div className="max-w-2xl mx-auto mb-14">
-            <div className="relative bg-gradient-to-r from-purple-700/80 to-indigo-800/80 backdrop-blur-xl border border-white/15 rounded-[2.5rem] p-8 shadow-2xl overflow-hidden">
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 size-8 bg-slate-950 rounded-full" />
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 size-8 bg-slate-950 rounded-full" />
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="text-center md:text-left space-y-2">
+          <div className="max-w-2xl mx-auto mb-10 sm:mb-14 px-2 sm:px-0">
+            <div className="relative bg-gradient-to-r from-purple-700/80 to-indigo-800/80 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-8 shadow-2xl overflow-hidden min-w-0 w-full">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 size-6 sm:size-8 bg-slate-950 rounded-full" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 size-6 sm:size-8 bg-slate-950 rounded-full" />
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 min-w-0">
+                <div className="text-center sm:text-left space-y-1.5 sm:space-y-2 min-w-0">
                   <p className="text-[10px] font-black tracking-widest text-purple-300 uppercase">Código Promocional</p>
-                  <div className="text-4xl font-black tracking-wider text-white font-mono">SALYA60D</div>
-                  <div className="flex items-center justify-center md:justify-start gap-2 text-purple-200 text-sm font-semibold">
-                    <span className="material-symbols-outlined text-base">calendar_month</span>
-                    60 dias de acesso total • Plano Corporativo
+                  <div className="text-3xl sm:text-4xl font-black tracking-wider text-white font-mono break-all">SALYA60D</div>
+                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-purple-200 text-xs sm:text-sm font-semibold">
+                    <span className="material-symbols-outlined text-sm sm:text-base shrink-0">calendar_month</span>
+                    <span className="break-words">60 dias de acesso total • Plano Corporativo</span>
                   </div>
                 </div>
-                <div className="size-20 rounded-3xl bg-white/15 backdrop-blur border border-white/20 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-5xl text-yellow-300">redeem</span>
+                <div className="size-16 sm:size-20 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur border border-white/20 flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-3xl sm:text-5xl text-yellow-300">redeem</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Dois caminhos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto px-2 sm:px-0">
             <a
               href={appPath('/login')}
-              className="group p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-purple-400/40 rounded-[1.75rem] transition-all text-center space-y-4 block"
+              className="group p-5 sm:p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-purple-400/40 rounded-2xl sm:rounded-[1.75rem] transition-all text-center space-y-3 sm:space-y-4 block"
             >
-              <div className="size-14 rounded-2xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl text-purple-300">login</span>
+              <div className="size-12 sm:size-14 rounded-2xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-2xl sm:text-3xl text-purple-300">login</span>
               </div>
               <div>
-                <h3 className="text-lg font-black text-white mb-1">Já tenho conta</h3>
-                <p className="text-sm text-slate-400 font-medium">
+                <h3 className="text-base sm:text-lg font-black text-white mb-1">Já tenho conta</h3>
+                <p className="text-xs sm:text-sm text-slate-400 font-medium">
                   Aceda à sua conta e ative o voucher em <span className="text-purple-300 font-bold">Configurações → Plano</span>.
                 </p>
               </div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-sm transition-all">
-                Entrar na conta
+              <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs sm:text-sm transition-all">
+                <span>Entrar na conta</span>
                 <span className="material-symbols-outlined text-base">arrow_forward</span>
               </div>
             </a>
 
             <a
               href={appPath('/registar?voucher=SALYA60D')}
-              className="group p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-yellow-400/40 rounded-[1.75rem] transition-all text-center space-y-4 block"
+              className="group p-5 sm:p-7 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-yellow-400/40 rounded-2xl sm:rounded-[1.75rem] transition-all text-center space-y-3 sm:space-y-4 block"
             >
-              <div className="size-14 rounded-2xl bg-yellow-500/20 border border-yellow-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-3xl text-yellow-300">person_add</span>
+              <div className="size-12 sm:size-14 rounded-2xl bg-yellow-500/20 border border-yellow-400/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-2xl sm:text-3xl text-yellow-300">person_add</span>
               </div>
               <div>
-                <h3 className="text-lg font-black text-white mb-1">Criar conta nova</h3>
-                <p className="text-sm text-slate-400 font-medium">
+                <h3 className="text-base sm:text-lg font-black text-white mb-1">Criar conta nova</h3>
+                <p className="text-xs sm:text-sm text-slate-400 font-medium">
                   Registe-se gratuitamente e ative o voucher <span className="text-yellow-300 font-bold">após o primeiro login</span> em Configurações.
                 </p>
               </div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-slate-900 font-bold rounded-xl text-sm transition-all shadow-lg shadow-yellow-500/20">
-                Criar conta grátis
+              <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-slate-900 font-bold rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-yellow-500/20">
+                <span>Criar conta grátis</span>
                 <span className="material-symbols-outlined text-base">star</span>
               </div>
             </a>
           </div>
 
-          <p className="text-center text-xs text-slate-500 mt-8 font-medium">
+          <p className="text-center text-[11px] sm:text-xs text-slate-500 mt-6 sm:mt-8 font-medium">
             Voucher válido por tempo limitado · Uma ativação por conta
           </p>
         </div>
