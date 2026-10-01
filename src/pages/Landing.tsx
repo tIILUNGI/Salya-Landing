@@ -602,7 +602,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-yellow-300"> completamente GRÁTIS</span>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
-              Experimente o sistema de folha de pagamento mais avançado de Angola. Sem cartão de crédito, sem compromissos. Ative o voucher <strong className="text-white">SALYA60D</strong> e comece hoje.
+              Experimente o sistema de folha de pagamento mais avançado de Angola. Ative o voucher <strong className="text-white">SALYA60D</strong> e comece hoje.
             </p>
           </div>
 
@@ -669,7 +669,7 @@ const Landing: React.FC<LandingProps> = ({ onShowTerms }) => {
           </div>
 
           <p className="text-center text-xs text-slate-500 mt-8 font-medium">
-            Voucher válido por tempo limitado · Uma ativação por conta · Sem cartão de crédito
+            Voucher válido por tempo limitado · Uma ativação por conta
           </p>
         </div>
       </section>
