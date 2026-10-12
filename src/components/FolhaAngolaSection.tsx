@@ -570,24 +570,36 @@ function SimuladorSalarial() {
   const [simSalario, setSimSalario] = useState<number>(250000);
   const [simAlimentacao, setSimAlimentacao] = useState<number>(30000);
   const [simTransporte, setSimTransporte] = useState<number>(25000);
-  const [simPrestador, setSimPrestador] = useState<boolean>(false);
-  const [simParticular, setSimParticular] = useState<boolean>(false);
+  const [regimeTrabalho, setRegimeTrabalho] = useState<string>('conta_outrem');
 
   const fmt2 = (value: number) =>
     `${value.toLocaleString('pt-AO', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} Kz`;
 
-  const inssCalculado = simPrestador ? 0 : calcularINSS(simSalario);
+  const isPrestador = regimeTrabalho === 'prestador';
+  const isParticular = regimeTrabalho === 'particular';
+  const isEstagiario = regimeTrabalho === 'estagiario';
+
+  const salarioBrutoTotal = simSalario + simAlimentacao + simTransporte;
+
+  // INSS: Prestador e Estagiário são isentos (0%)
+  const inssCalculado = (isPrestador || isEstagiario) ? 0 : calcularINSS(simSalario);
   const alimentacaoTrib = Math.max(0, simAlimentacao - 30000);
   const transporteTrib = Math.max(0, simTransporte - 30000);
-  const materiaColectavel = Math.max(0, simSalario + alimentacaoTrib + transporteTrib - inssCalculado);
-  const irtResult = calcularIRT(materiaColectavel, simPrestador, simParticular, simSalario);
+
+  // IRT:
+  // - Prestador: taxa fixa de 6,5% sobre TUDO (Total Rendimentos Bruto, sem isenção de subsídios)
+  // - Outros regimes: matéria colectável (Base + excedente de subsídios - INSS)
+  const materiaColectavel = isPrestador
+    ? salarioBrutoTotal
+    : Math.max(0, simSalario + alimentacaoTrib + transporteTrib - inssCalculado);
+
+  const irtResult = calcularIRT(materiaColectavel, isPrestador, isParticular, simSalario);
   const irtCalculado = irtResult.valor;
-  const faixaAtiva = irtResult.faixa;
-  const inssPatronal = calcularINSSPatronal(simSalario, simPrestador);
-  const custoTotalEmpresa = simPrestador
-    ? simSalario + simAlimentacao + simTransporte
-    : simSalario + simAlimentacao + simTransporte + inssPatronal;
-  const salarioBrutoTotal = simSalario + simAlimentacao + simTransporte;
+  const faixaAtiva = isPrestador ? 'Prestador (Taxa Fixa 6,5%)' : irtResult.faixa;
+  const inssPatronal = calcularINSSPatronal(simSalario, isPrestador);
+  const custoTotalEmpresa = isPrestador
+    ? salarioBrutoTotal
+    : salarioBrutoTotal + inssPatronal;
   const totalDescontos = inssCalculado + irtCalculado;
   const salarioLiquido = salarioBrutoTotal - totalDescontos;
 
@@ -595,39 +607,28 @@ function SimuladorSalarial() {
     <div className="space-y-6">
       {/* Parâmetros */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Regime Contratual</label>
-          <div className="flex flex-col gap-3">
-            <label className="flex items-center gap-2 text-sm text-slate-300 font-medium cursor-pointer">
-              <input
-                type="checkbox"
-                checked={simPrestador}
-                onChange={(e) => {
-                  setSimPrestador(e.target.checked);
-                  if (e.target.checked) setSimParticular(false);
-                }}
-                className="rounded accent-primary h-4 w-4"
-              />
-              Prestador de Serviço (Independente)
-            </label>
-            <label className="flex items-center gap-2 text-sm text-slate-300 font-medium cursor-pointer">
-              <input
-                type="checkbox"
-                checked={simParticular}
-                onChange={(e) => {
-                  setSimParticular(e.target.checked);
-                  if (e.target.checked) setSimPrestador(false);
-                }}
-                className="rounded accent-primary h-4 w-4"
-              />
-              Trabalho Particular / Doméstico
-            </label>
-          </div>
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Regime de Trabalho</label>
+          <select
+            value={regimeTrabalho}
+            onChange={(e) => setRegimeTrabalho(e.target.value)}
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-semibold text-white outline-none focus:border-primary transition-all text-sm"
+          >
+            <option value="conta_outrem">Trabalhador por Conta de Outrem</option>
+            <option value="termo_certo">Contrato a Termo Certo</option>
+            <option value="termo_incerto">Contrato a Termo Incerto</option>
+            <option value="eventual">Contrato de Trabalho Eventual</option>
+            <option value="prestador">Prestador de Serviço</option>
+            <option value="estagiario">Estagiário / Aprendiz</option>
+            <option value="particular">Trabalho Particular / Doméstico</option>
+          </select>
         </div>
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Salário Base (Kz)</label>
+            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">
+              {isPrestador ? 'Honorários / Valor Base (Kz)' : 'Salário Base (Kz)'}
+            </label>
             <span className="text-xs font-bold text-primary font-mono">{fmt2(simSalario)}</span>
           </div>
           <input
@@ -689,7 +690,10 @@ function SimuladorSalarial() {
         </div>
 
         <div className="space-y-2.5 font-mono text-xs">
-          <div className="flex justify-between"><span className="text-slate-400">Salário Base</span><span className="text-slate-200">{fmt2(simSalario)}</span></div>
+          <div className="flex justify-between">
+            <span className="text-slate-400">{isPrestador ? 'Honorários / Base' : 'Salário Base'}</span>
+            <span className="text-slate-200">{fmt2(simSalario)}</span>
+          </div>
           <div className="flex justify-between"><span className="text-slate-400">Sub. Alimentação</span><span className="text-slate-200">{fmt2(simAlimentacao)}</span></div>
           <div className="flex justify-between"><span className="text-slate-400">Sub. Transporte</span><span className="text-slate-200">{fmt2(simTransporte)}</span></div>
           <div className="flex justify-between font-bold text-sm pt-2 border-t border-dashed border-slate-800">
@@ -700,9 +704,19 @@ function SimuladorSalarial() {
 
         <div className="space-y-2.5 font-mono text-xs pt-3 border-t border-slate-800">
           <p className="text-[10px] font-bold text-rose-400 uppercase tracking-widest">Descontos Retidos</p>
-          <div className="flex justify-between"><span className="text-slate-400">INSS (3% Trabalhador)</span><span className="text-rose-400">-{fmt2(inssCalculado)}</span></div>
-          <div className="flex justify-between"><span className="text-slate-400">IRT</span><span className="text-rose-400">-{fmt2(irtCalculado)}</span></div>
-          {salarioBrutoTotal > 0 && !simPrestador && (
+          <div className="flex justify-between">
+            <span className="text-slate-400">INSS (3% Trabalhador)</span>
+            <span className={inssCalculado === 0 ? 'text-emerald-400 font-semibold' : 'text-rose-400'}>
+              {inssCalculado === 0 ? '0 Kz (Isento)' : `-${fmt2(inssCalculado)}`}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-slate-400">
+              {isPrestador ? 'IRT (6,5%)' : 'IRT'}
+            </span>
+            <span className="text-rose-400">-{fmt2(irtCalculado)}</span>
+          </div>
+          {salarioBrutoTotal > 0 && !isPrestador && inssPatronal > 0 && (
             <div className="flex justify-between pt-1 border-t border-slate-800/50">
               <span className="text-slate-400">INSS Patronal (8% Empresa)</span>
               <span className="text-amber-400 font-bold">+{fmt2(inssPatronal)}</span>
